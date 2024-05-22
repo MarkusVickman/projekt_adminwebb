@@ -83,14 +83,37 @@ input{
     font-family: 'Courier New', Courier, monospace;
 }
 
-.menu-row p{
+.column{
     display: inline-block;
     margin: 15px;
 }
+
+.price, .kr{
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.kr{
+    display: inline-block;
+    margin-right: 15px;
+    margin-left: 5;
+}
+
 .menu-row{
-margin-left: 10%;
+    margin-left: 10%;
     border-width: 0 0 1px 0;
     border-color: black;
     border-style: solid;
     width: 80%;
+}
+
+.update-item {
+    margin-right: 10px;
+}
+
+#page-width{
+    width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
 }

@@ -22,76 +22,12 @@ export async function menuGet() {
     }
 }
 
-//Post fetch-anrop som tar in ett objekt som parameter
-/*export async function menuPost(cv) {
-      let response = await fetch('https://project-dt207g.azurewebsites.net/protected/menu/add', {
-            method: 'POST',
-            headers: {
-                  'authorization': 'Bearer ' + sessionStorage.getItem("token"),
-                  'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(cv)
-      });
-      let data = await response.json();
-      //När det är klart skrivs ett meddelande ut på skärmen att inlägget är sparat
-      alert2.innerHTML = "Ditt inlägg är nu lagrat i databasen.";
-      writeCvToHtml();
-}*/
-
-//Put fetch-anrop som tar in ett objekt som parameter
-/*export async function menuPut(cv) {
-    let response = await fetch('https://project-dt207g.azurewebsites.net/protected/menu/edit', {
-          method: 'POST',
-          headers: {
-                'authorization': 'Bearer ' + sessionStorage.getItem("token"),
-                'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(cv)
-    });
-    let data = await response.json();
-    //När det är klart skrivs ett meddelande ut på skärmen att inlägget är sparat
-    alert2.innerHTML = "Ditt inlägg är nu lagrat i databasen.";
-    writeCvToHtml();
-}*/
 
 
 
 
 
-//variabler för meddelanden och eventlistener 
-const menuDiv = document.getElementById("menu-div");
 
-document.addEventListener("DOMContentLoaded", (e) => {
-    //Eventlistener som lyssnar efter klick på ta bort knapparna för cv, initierar funktionen removeCV och skickar med id/index som argument
-    menuDiv.addEventListener("click", (e) => {
-        if (e.target.classList.contains("remove-item")) {
-            let id = e.target.id;
-            removeMenu(id);
-        }
-    });
-});
-
-//Funktionen skickar med id/index till delete fetch-funktionen och väntar på svar. När svar nås skrivs ett meddelande ut på skärmen
-async function removeMenu(id) {
-    let data = await menuDelete(id);
-    menu();
-    alert2.innerHTML = `Ett CV-inlägg är borttaget från databasen.`;
-}
-
-//Delete fetch-anrop som tar in ett id/index som skickas med till servern för att tas bort från databasen 
-async function menuDelete(id) {
-      let response = await fetch(`https://project-dt207g.azurewebsites.net/protected/menu/delete/${id}`, {
-            method: 'DELETE',
-            headers: {
-                  'authorization': 'Bearer ' + sessionStorage.getItem("token"),
-                  'Content-Type': 'application/json'
-            },
-            body: JSON.stringify()
-      });
-      //Väntar på data och först när den finns görs en retur till funktionen removeCV(id) där den väntar på svar
-      let data = await response.json();
-      return data;
-}
 
 
 
@@ -145,21 +81,38 @@ export async function menu() {
             p1.style.textdecoration = "underlined";
             p1.appendChild(p1Text);
             p1.contentEditable = true;
+            p1.id = "foodName" + menuArray[i]._id; 
+            p1.classList.add("column");
 
             let p = document.createElement("p");
-            let pText = document.createTextNode(menuArray[i].price + " kr");
+            let pText = document.createTextNode(menuArray[i].price);
             p.appendChild(pText);
             p.contentEditable = true;
+            p.id = "price" + menuArray[i]._id;
+            p.classList.add("price");
+
+            let kr = document.createElement("p");
+            let krText = document.createTextNode(" kr");
+            kr.appendChild(krText);
+            kr.classList.add("kr");
 
             let p2 = document.createElement("p");
             let p2Text = document.createTextNode(menuArray[i].description + ", ");
             p2.appendChild(p2Text);
             p2.contentEditable = true;
+            p2.id = "description" + menuArray[i]._id;
+            p2.classList.add("column");
 
             let p3 = document.createElement("p");
             let p3Text = document.createTextNode("Senast ändrad " + menuArray[i].created.slice(0, 10) + " av " + menuArray[i].username);
             p3.appendChild(p3Text);
-            p3.contentEditable = true;
+            p3.classList.add("column");
+
+            let buttonEdit = document.createElement("button");
+            let buttonEditText = document.createTextNode("Uppdatera");
+            buttonEdit.appendChild(buttonEditText);
+            buttonEdit.id = ("update" + menuArray[i]._id);
+            buttonEdit.classList.add("update-item");
 
             let button = document.createElement("button");
             let buttonText = document.createTextNode("Ta bort");
@@ -168,9 +121,11 @@ export async function menu() {
             button.classList.add("remove-item");
 
             newDiv.appendChild(p1);
-            newDiv.appendChild(p);
             newDiv.appendChild(p2);
+            newDiv.appendChild(p);
+            newDiv.appendChild(kr);
             newDiv.appendChild(p3);
+            newDiv.appendChild(buttonEdit);
             newDiv.appendChild(button);
 
             if (menuArray[i].menyType === "starter") {

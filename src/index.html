@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grillhörnan</title>
     <!--Länk till script-fil-->
-    <script src="js/login.js" type="module"></script>
+    <script src="js/menu.js" type="module"></script>
     <!--Länk till css-fil-->
     <link rel="stylesheet" href="css/main.css">
     <!--Länk till google-fonts typsnitt-->
@@ -22,44 +22,31 @@
     <header id="header">
 
         <!--Centrerar kategorivalen-->
-        <!--  <nav class="center1">
+        <nav class="center1">
             <ul>
                 <li><a href="#log">Logga in</a></li>
                 <li><a href="#reg">Registrera användare</a></li>
             </ul>
-        </nav>-->
-        <h1>Grillhörnan</h1>
+        </nav>
+
     </header>
     <!--Main startsidan-->
     <main id="main">
-        <!--  <img src="img/grill.png" id="grilltext" alt="bild med texten grillhörnan i handskriven stil">
+        <img src="img/grill.png" id="grilltext" alt="bild med texten grillhörnan i handskriven stil">
         <img src="img/tintedfirst.jpg" id="first-img" alt="Bild på en middag med biffar, grönsaker och bröd">
-      -->
-        <article id="log">
-            <h2>Logga in</h2>
-            <form id="form1">
-                <label for="user_name">Namn:</label><br>
-                <input type="text" id="user_name">
-                <br>
-                <label for="password">Lösenord:</label><br>
-                <input type="password" id="password">
-                <button id="submit" title="login" type="submit">Logga in</button>
-            </form>
-            <p id="alert1"></p>
-        </article>
-        <article id="reg">
-            <h2>Registrera Användare</h2>
-            <form id="form2">
-                <label for="user_name2">Namn:</label><br>
-                <input type="text" id="user_name2">
-                <br>
-                <label for="password2">Lösenord:</label><br>
-                <input type="password" id="password2">
-                <button id="submit2" title="register" type="submit">Skapa</button>
-            </form>
-            <p id="alert2"></p>
+        <h1>Grillhörnan</h1>
+        <article id="menu">
+            <h2>Meny</h2>
+            <p>Här kan du ändra eller ta bort i restaurangensmeny</p>
+            <div id="menu-div">
+                <p id="alert"></p>
+                <article id="starter" class="inline"></article>
+                <article id="main-menu" class="inline"></article>
+                <article id="dessert" class="inline"></article>
+            </div>
         </article>
     </main>
+    <a href="login.html"></a>
     <a href="admin.html"></a>
 </body>
 

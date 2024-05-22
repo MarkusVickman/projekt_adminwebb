@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grillhörnan</title>
     <!--Länk till script-fil-->
-    <script src="js/editmenu.js" type="module"></script>
+    <script src="js/get_menu.js" type="module"></script>
+    <script src="js/new_menu_item.js" type="module"></script>
+    <script src="js/update_menu_item.js" type="module"></script>
+    <script src="js/delete_menu_item.js" type="module"></script>
     <!--Länk till css-fil-->
     <link rel="stylesheet" href="css/main.css">
     <!--Länk till google-fonts typsnitt-->
@@ -33,6 +36,7 @@
     <main id="main">
         <img src="img/grill.png" id="grilltext" alt="bild med texten grillhörnan i handskriven stil">
         <img src="img/tintedfirst.jpg" id="first-img" alt="Bild på en middag med biffar, grönsaker och bröd">
+        <div id="page-width">
         <h1>Grillhörnan</h1>
         <p>Administratörswebbplatsen för restaurangen Grillhörnan.</p>
         <article id="orders">
@@ -42,6 +46,28 @@
             <h2>Meny</h2>
             <p>Här kan du ändra eller ta bort i restaurangensmeny</p>
             <div id="menu-div">
+                <form id="form">
+                   <!-- <label for="foodType">Choose a car:</label>-->
+
+                    <select name="menyType" id="menyType">
+                        <option value="">Välj typ av rätt</option>
+                        <option value="starter">Förrätt</option>
+                        <option value="main">Huvudrätt</option>
+                        <option value="dessert">Efterrätt</option>
+                    </select>
+                    <!--<label for="company_name">Företagsnamn:</label><br>-->
+                    <input type="text" id="foodName" placeholder="Maträtt">
+
+                    <!--<label for="job_title">Jobbtitel:</label><br>-->
+                    <input type="text" id="description" placeholder="Beskrivning">
+
+                    <!--<label for="location">Ort:</label><br>-->
+                    <input type="number" id="price" placeholder="Pris">
+
+                    <button id="submit-update" type="submit">Spara</button>
+                </form>
+                <p id="addAlert1"></p>
+                <p id="addAlert2"></p>
                 <article id="starter"></article>
                 <article id="main-menu"></article>
                 <article id="dessert"></article>
@@ -49,13 +75,14 @@
                 <p id="alert2"></p>
             </div>
 
-           <!--<button id="menu">Meny</button><button id="edit-menu">Ändra meny</button>-->
+            <!--<button id="menu">Meny</button><button id="edit-menu">Ändra meny</button>-->
         </article>
         <article id="admin">
             <h2>Användare</h2>
             <p>Acceptera anställdaskonton eller ta bort anställdas tillgång.</p>
             <div id="write-user"></div>
         </article>
+    </div>
     </main>
 </body>
 

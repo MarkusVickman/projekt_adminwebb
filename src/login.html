@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grillhörnan</title>
+    <!--Länk till script-fil-->
+    <script src="js/login.js" type="module"></script>
+    <!--Länk till css-fil-->
+    <link rel="stylesheet" href="css/main.css">
+    <!--Länk till google-fonts typsnitt-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <!--Favicon-->
+    <link rel="icon" type="image/x-icon" sizes="32x32" href="favicon.ico?ver=2.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+</head>
+
+<body>
+    <header id="header">
+
+        <!--Centrerar kategorivalen-->
+        <!--  <nav class="center1">
+            <ul>
+                <li><a href="#log">Logga in</a></li>
+                <li><a href="#reg">Registrera användare</a></li>
+            </ul>
+        </nav>-->
+        <h1>Grillhörnan</h1>
+    </header>
+    <!--Main startsidan-->
+    <main id="main">
+        <!--  <img src="img/grill.png" id="grilltext" alt="bild med texten grillhörnan i handskriven stil">
+        <img src="img/tintedfirst.jpg" id="first-img" alt="Bild på en middag med biffar, grönsaker och bröd">
+      -->
+        <article id="log">
+            <h2>Logga in</h2>
+            <form id="form1">
+                <label for="user_name">Namn:</label><br>
+                <input type="text" id="user_name">
+                <br>
+                <label for="password">Lösenord:</label><br>
+                <input type="password" id="password">
+                <button id="submit" title="login" type="submit">Logga in</button>
+            </form>
+            <p id="alert1"></p>
+        </article>
+        <article id="reg">
+            <h2>Registrera Användare</h2>
+            <form id="form2">
+                <label for="user_name2">Namn:</label><br>
+                <input type="text" id="user_name2">
+                <br>
+                <label for="password2">Lösenord:</label><br>
+                <input type="password" id="password2">
+                <button id="submit2" title="register" type="submit">Skapa</button>
+            </form>
+            <p id="alert2"></p>
+        </article>
+    </main>
+
+</body>
+
+</html>
