@@ -10,6 +10,9 @@
     <script src="js/new_menu_item.js" type="module"></script>
     <script src="js/update_menu_item.js" type="module"></script>
     <script src="js/delete_menu_item.js" type="module"></script>
+    <script src="js/verify.js" type="module"></script>
+    <script src="js/get_workers.js" type="module"></script>
+    <script src="js/verify_worker.js" type="module"></script>
     <!--Länk till css-fil-->
     <link rel="stylesheet" href="css/main.css">
     <!--Länk till google-fonts typsnitt-->
@@ -30,6 +33,7 @@
                 <li><a href="#meny">Meny</a></li>
                 <li><a href="#admin">Användare</a></li>
             </ul>
+            <button id="logout-btn">Logga ut</button>
         </nav>
     </header>
     <!--Main startsidan-->
@@ -80,7 +84,11 @@
         <article id="admin">
             <h2>Användare</h2>
             <p>Acceptera anställdaskonton eller ta bort anställdas tillgång.</p>
-            <div id="write-user"></div>
+            <div id="write-user">
+                <p id="alert-verify"></p>
+                <article id="verified"></article>
+                <article id="not-verified"></article>
+            </div>
         </article>
     </div>
     </main>

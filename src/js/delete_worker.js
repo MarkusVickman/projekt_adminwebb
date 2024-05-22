@@ -1,27 +1,27 @@
 
-import { menu } from './get_menu';
+import { worker } from './get_workers';
 
 
 
 
 //variabler för meddelanden och eventlistener 
-const menuDiv = document.getElementById("menu-div");
+const workerDiv = document.getElementById("write-user");
 
 document.addEventListener("DOMContentLoaded", (e) => {
     //Eventlistener som lyssnar efter klick på ta bort knapparna för cv, initierar funktionen removeCV och skickar med id/index som argument
-    menuDiv.addEventListener("click", (e) => {
-        if (e.target.classList.contains("remove-item")) {
+    workerDiv.addEventListener("click", (e) => {
+        if (e.target.classList.contains("remove-worker")) {
             let id = e.target.id;
-            removeMenu(id);
+            removeWorker(id);
         }
     });
 });
 
 //Funktionen skickar med id/index till delete fetch-funktionen och väntar på svar. När svar nås skrivs ett meddelande ut på skärmen
-async function removeMenu(id) {
-    let data = await menuDelete(id);
-    menu();
-    alert2.innerHTML = `En menyrad är borttaget från databasen.`;
+async function removeWorker(id) {
+    let data = await workerDelete(id);
+    worker();
+    alert2.innerHTML = `En användare är borttaget från databasen.`;
 }
 
 
@@ -31,8 +31,8 @@ async function removeMenu(id) {
 
 
 //Delete fetch-anrop som tar in ett id/index som skickas med till servern för att tas bort från databasen 
-async function menuDelete(id) {
-    let response = await fetch(`https://project-dt207g.azurewebsites.net/protected/menu/delete/${id}`, {
+async function workerDelete(id) {
+    let response = await fetch(`https://project-dt207g.azurewebsites.net/protected/user/delete/${id}`, {
           method: 'DELETE',
           headers: {
                 'authorization': 'Bearer ' + sessionStorage.getItem("token"),

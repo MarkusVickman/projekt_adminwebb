@@ -16,7 +16,7 @@ function apiLogin(login) {
     })
         .then(response => {
             if (!response.ok) {
-                throw new Error("Fel lösenord eller användarnamn");
+                throw new Error("Om problemet kvarstår prata med administratören för att verifiera din användare.");
             }
             return response.json();
         })
