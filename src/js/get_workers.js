@@ -1,6 +1,6 @@
 
 //Läser in variabel med ett element där meddelanden ska visas
-
+const admin = document.getElementById("admin");
 
 
 //Get fetch-anrop för att hämta array med cv.
@@ -36,7 +36,7 @@ export async function workerGet() {
 //div där cv-data ska skrivas ut
 const verifiedArticle = document.getElementById("verified");
 const notVerifiedArticle = document.getElementById("not-verified");
-const admin = document.getElementById("admin");
+
 
 
 //När sidan laddas 
@@ -88,15 +88,19 @@ export async function worker() {
             buttonVerify.id = ("verify" + workerArray[i]._id);
             buttonVerify.classList.add("verify");
 
-            let button = document.createElement("button");
-            let buttonText = document.createTextNode("Ta bort");
-            button.appendChild(buttonText);
-            button.id = workerArray[i]._id;
-            button.classList.add("remove-worker");
+
+
 
             newDiv.appendChild(p1);
             newDiv.appendChild(p2);
-            newDiv.appendChild(button);
+            if (workerArray[i].username !== "admin") {
+                let button = document.createElement("button");
+                let buttonText = document.createTextNode("Ta bort");
+                button.appendChild(buttonText);
+                button.id = workerArray[i]._id;
+                button.classList.add("remove-worker");
+                newDiv.appendChild(button);
+            }
 
             if (workerArray[i].verified === true) {
                 verifiedArticle.appendChild(newDiv);
