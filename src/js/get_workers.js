@@ -38,7 +38,6 @@ export async function worker() {
     // Anropa funktionen för att hämta data och väntar på svar
     let workerArray = await workerGet();
 
-    console.log(workerArray);
     if (workerArray.result === "notadmin") {
         const adminWorker = document.getElementById("adminWorker");
         adminWorker.style.display = "none";

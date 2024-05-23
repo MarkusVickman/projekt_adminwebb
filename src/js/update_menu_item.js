@@ -63,7 +63,6 @@ import { menu } from './get_menu';
 
 //Post fetch-anrop som tar in ett objekt som parameter
 export async function menuPut(menu) {
-    console.log(menu);
     let response = await fetch('https://project-dt207g.azurewebsites.net/protected/menu/edit', {
         method: 'PUT',
         headers: {

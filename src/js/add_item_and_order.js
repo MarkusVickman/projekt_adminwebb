@@ -14,14 +14,12 @@ let order = [];
 document.addEventListener("DOMContentLoaded", (e) => {
     //Eventlistener som lyssnar efter klick på ta bort knapparna för cv, initierar funktionen removeCV och skickar med id/index som argument
     orderDiv.addEventListener("click", (e) => {
-        console.log(e.target.id);
         if (e.target.classList.contains("order-item")) {
             let id = e.target.id;
             let price = e.target.title;
             order.push({ foodName: id, price: price });
             document.getElementById(e.target.id).style.backgroundColor = "lightblue";
-            //addToOrder(id);
-            console.log(order);
+
             cart.style.display = "block";
             writeCart(order);
         }
@@ -47,7 +45,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         // Hämta användarnamn i lowerCase och lösenord från formuläret
         let userName = document.getElementById("user_name").value.toLowerCase();
         let email = document.getElementById("email").value;
-        console.log(userName + email);
+
         //Letar fel i formuläret med errorCheck funktionen. Utan fel så skapas ett object som skickas till funktionen för POST-anrop
         if (errorCheck(userName, email)) {
 

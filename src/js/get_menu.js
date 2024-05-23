@@ -59,8 +59,6 @@ const dessertArticle = document.getElementById("dessert");
     hDessert.appendChild(hDessertText);
     dessertArticle.appendChild(hDessert);
 
-    console.log(menuArray);
-
     //Om arrayen inte är tom byggs innehållet upp utifrån arrayen som loopas igenom. 
     if (menuArray.length > 0) {
 
