@@ -7,6 +7,7 @@
     <title>Grillhörnan</title>
     <!--Länk till script-fil-->
     <script src="js/menu.js" type="module"></script>
+    <script src="js/add_item_and_order.js" type="module"></script>
     <!--Länk till css-fil-->
     <link rel="stylesheet" href="css/main.css">
     <!--Länk till google-fonts typsnitt-->
@@ -37,14 +38,38 @@
         <h1>Grillhörnan</h1>
         <article id="menu">
             <h2>Meny</h2>
-            <p>Här kan du ändra eller ta bort i restaurangensmeny</p>
             <div id="menu-div">
                 <p id="alert"></p>
                 <article id="starter" class="inline"></article>
                 <article id="main-menu" class="inline"></article>
                 <article id="dessert" class="inline"></article>
             </div>
+            <div id="order-div">
+                <article id="order-starter" class="inline"></article>
+                <article id="order-main" class="inline"></article>
+                <article id="order-dessert" class="inline"></article>
+            </div>
         </article>
+        <div id="cart"></div>
+        <div id="cart-items">
+            <div id="cart-header"><button id="cart-close">Stäng</button></div>
+            <h3>Kundkorgen</h3>
+            <p>Alla beställningar hämtas hos oss och betalas på plats.</p>
+            <div id="write-out-cart">
+            </div>
+            <div id="cart-footer"></div>
+
+                <form id="form">
+                    <label for="user_name">Namn:</label><br>
+                    <input type="text" id="user_name">
+                    <br>
+                    <label for="email">Epost:</label><br>
+                    <input type="email" id="email">
+                    <button id="submit" title="order" type="submit">Beställ</button>
+                </form>
+                <p id="alert-checkout"></p>
+
+        </div>
     </main>
     <a href="login.html"></a>
     <a href="admin.html"></a>

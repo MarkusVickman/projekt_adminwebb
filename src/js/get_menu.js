@@ -14,29 +14,16 @@ export async function menuGet() {
         })
         const result = await response.json();
         //returnerar json-data till funktionen writeCvToHtml()
-        alert.innerHTML = "";
+       // alert.innerHTML = "";
         return result;
     } catch (error) {
-        alert.innerHTML = "Inläggen kunde inte laddas in.";
+        //alert.innerHTML = "Inläggen kunde inte laddas in.";
         console.error(error);
     }
 }
 
-
-
-
-
-
-
-
-
-
-
 //fil för att skriva ut från servern/databasen till webplatsens
-//div där cv-data ska skrivas ut
-const starterArticle = document.getElementById("starter");
-const mainArticle = document.getElementById("main-menu");
-const dessertArticle = document.getElementById("dessert");
+
 
 
 //När sidan laddas 
@@ -47,10 +34,15 @@ export async function menu() {
     // Anropa funktionen för att hämta data och väntar på svar
     let menuArray = await menuGet();
 
+    //div där cv-data ska skrivas ut
+const starterArticle = document.getElementById("starter");
+const mainArticle = document.getElementById("main-menu");
+const dessertArticle = document.getElementById("dessert");
+
     //Rensar html
     starterArticle.innerHTML = "";
     mainArticle.innerHTML = "";
-    dessertArticle.innerHTML = "";
+     dessertArticle.innerHTML = "";
 
     let hStarter = document.createElement("h3");
     let hStarterText = document.createTextNode("Förrätter");
