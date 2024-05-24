@@ -50,8 +50,6 @@ export async function order() {
     hNotVerified.appendChild(hNotVerifiedText);
     orderArticle.appendChild(hNotVerified);
 
-    console.log(orderArray);
-
     //Om arrayen inte är tom byggs innehållet upp utifrån arrayen som loopas igenom. 
     if (orderArray.length > 0) {
 

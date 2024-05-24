@@ -73,7 +73,8 @@ export async function menuLoad() {
 
             let p1 = document.createElement("p");
             let p1Text = document.createTextNode(menuArray[i].foodName + ", ");
-            p1.style.textdecoration = "underlined";
+            p1.style.textDecoration = "underline";
+            p1.style.fontWeight = "bold";
             p1.appendChild(p1Text);
             p1.classList.add("column");
 
@@ -139,7 +140,8 @@ export async function orderMenu() {
 
             let p1 = document.createElement("p");
             let p1Text = document.createTextNode(menuArray[i].foodName + ", ");
-            p1.style.textdecoration = "underlined";
+            p1.style.textDecoration = "underline";
+            p1.style.fontWeight = "bold";
             p1.appendChild(p1Text);
             p1.classList.add("column");
 
@@ -163,9 +165,9 @@ export async function orderMenu() {
 
             newDiv.appendChild(p1);
             newDiv.appendChild(p);
-            newDiv.appendChild(button);
-            newDiv.appendChild(p2);
 
+            newDiv.appendChild(p2);
+            newDiv.appendChild(button);
 
             if (menuArray[i].menyType === "starter") {
                 starterOrder.appendChild(newDiv);
@@ -185,3 +187,25 @@ export async function orderMenu() {
 export function menuExport() {
     return menuArray;
 }
+
+
+document.addEventListener("DOMContentLoaded", (event) => {
+
+    const showOrderMenu = document.getElementById("show-order-menu");
+    const showOrder = document.getElementById("show-menu");
+    const menuDiv = document.getElementById("menu-div");
+    const orderDiv = document.getElementById("order-div");
+
+    // Lägg till händelselyssnare på formuläret
+    showOrder.addEventListener("click", (e) => {        
+
+        menuDiv.style.display = "block";
+        orderDiv.style.display = "none";
+        });
+
+    showOrderMenu.addEventListener("click", (e) => {
+
+        menuDiv.style.display = "none";
+        orderDiv.style.display = "block";
+    })
+});

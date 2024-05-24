@@ -14,7 +14,7 @@ export async function menuGet() {
         })
         const result = await response.json();
         //returnerar json-data till funktionen writeCvToHtml()
-       // alert.innerHTML = "";
+        // alert.innerHTML = "";
         return result;
     } catch (error) {
         //alert.innerHTML = "Inläggen kunde inte laddas in.";
@@ -35,14 +35,14 @@ export async function menu() {
     let menuArray = await menuGet();
 
     //div där cv-data ska skrivas ut
-const starterArticle = document.getElementById("starter");
-const mainArticle = document.getElementById("main-menu");
-const dessertArticle = document.getElementById("dessert");
+    const starterArticle = document.getElementById("starter");
+    const mainArticle = document.getElementById("main-menu");
+    const dessertArticle = document.getElementById("dessert");
 
     //Rensar html
     starterArticle.innerHTML = "";
     mainArticle.innerHTML = "";
-     dessertArticle.innerHTML = "";
+    dessertArticle.innerHTML = "";
 
     let hStarter = document.createElement("h3");
     let hStarterText = document.createTextNode("Förrätter");
@@ -66,12 +66,15 @@ const dessertArticle = document.getElementById("dessert");
             let newDiv = document.createElement("div");
             newDiv.classList.add(`menu-row`);
 
+            let div1 = document.createElement("div");
+            let div2 = document.createElement("div");
+
             let p1 = document.createElement("p");
-            let p1Text = document.createTextNode(menuArray[i].foodName + ", ");
-            p1.style.textdecoration = "underlined";
+            let p1Text = document.createTextNode(menuArray[i].foodName);
+            p1.style.textDecoration = "underline";
             p1.appendChild(p1Text);
             p1.contentEditable = true;
-            p1.id = "foodName" + menuArray[i]._id; 
+            p1.id = "foodName" + menuArray[i]._id;
             p1.classList.add("column");
 
             let p = document.createElement("p");
@@ -87,11 +90,11 @@ const dessertArticle = document.getElementById("dessert");
             kr.classList.add("kr");
 
             let p2 = document.createElement("p");
-            let p2Text = document.createTextNode(menuArray[i].description + ", ");
+            let p2Text = document.createTextNode(menuArray[i].description);
             p2.appendChild(p2Text);
             p2.contentEditable = true;
             p2.id = "description" + menuArray[i]._id;
-            p2.classList.add("column");
+            //  p2.classList.add("column");
 
             let p3 = document.createElement("p");
             let p3Text = document.createTextNode("Senast ändrad " + menuArray[i].created.slice(0, 10) + " av " + menuArray[i].username);
@@ -110,13 +113,26 @@ const dessertArticle = document.getElementById("dessert");
             button.id = menuArray[i]._id;
             button.classList.add("remove-item");
 
-            newDiv.appendChild(p1);
-            newDiv.appendChild(p2);
-            newDiv.appendChild(p);
-            newDiv.appendChild(kr);
-            newDiv.appendChild(p3);
-            newDiv.appendChild(buttonEdit);
-            newDiv.appendChild(button);
+            div1.appendChild(p1);
+            div1.appendChild(p);
+            div1.appendChild(kr);
+
+            div2.appendChild(p3);
+            div2.appendChild(buttonEdit);
+            div2.appendChild(button);
+
+            newDiv.appendChild(div1);
+            newDiv.appendChild(p2)
+            newDiv.appendChild(div2);
+
+
+            /*       newDiv.appendChild(p1);
+                   newDiv.appendChild(p2);
+                   newDiv.appendChild(p);
+                   newDiv.appendChild(kr);
+                   newDiv.appendChild(p3);
+                   newDiv.appendChild(buttonEdit);
+                   newDiv.appendChild(button);*/
 
             if (menuArray[i].menyType === "starter") {
                 starterArticle.appendChild(newDiv);

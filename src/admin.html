@@ -22,7 +22,8 @@
     <!--Länk till google-fonts typsnitt-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Permanent+Marker&display=swap"
+        rel="stylesheet">
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" sizes="32x32" href="favicon.ico?ver=2.0">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -35,7 +36,7 @@
             <ul>
                 <li><a href="#orders">Beställningar</a></li>
                 <li><a href="#meny">Meny</a></li>
-                <li><a href="#admin">Användare</a></li>
+                <li id="admin-link"><a href="#admin">Användare</a></li>
             </ul>
             <button id="logout-btn">Logga ut</button>
         </nav>
@@ -45,60 +46,92 @@
         <img src="img/grill.png" id="grilltext" alt="bild med texten grillhörnan i handskriven stil">
         <img src="img/tintedfirst.jpg" id="first-img" alt="Bild på en middag med biffar, grönsaker och bröd">
         <div id="page-width">
-        <h1>Grillhörnan</h1>
-        <p>Administratörswebbplatsen för restaurangen Grillhörnan.</p>
-        <article id="orders">
-            <h2>Beställningar</h2>
-            <div id="order-article"></div>
-            <div id="completed-order"></div>
+            <h1>Grillhörnan</h1>
+            <p>Administratörswebbplatsen för restaurangen Grillhörnan.</p>
+            <article id="orders">
+                <h2>Beställningar</h2>
+                <div id="order-article"></div>
+                <div id="completed-order"></div>
 
-        </article>
-        <article id="menu">
-            <h2>Meny</h2>
-            <p>Här kan du ändra eller ta bort i restaurangensmeny</p>
-            <div id="menu-div">
-                <form id="form">
-                   <!-- <label for="foodType">Choose a car:</label>-->
+            </article>
+            <article id="menu">
+                <h2>Meny</h2>
+                <p>Här kan du ändra eller ta bort i restaurangensmeny</p>
+                <div id="menu-div">
+                    <form id="form">
+                        <!-- <label for="foodType">Choose a car:</label>-->
 
-                    <select name="menyType" id="menyType">
-                        <option value="">Välj typ av rätt</option>
-                        <option value="starter">Förrätt</option>
-                        <option value="main">Huvudrätt</option>
-                        <option value="dessert">Efterrätt</option>
-                    </select>
-                    <!--<label for="company_name">Företagsnamn:</label><br>-->
-                    <input type="text" id="foodName" placeholder="Maträtt">
+                        <select name="menyType" id="menyType">
+                            <option value="">Välj typ av rätt</option>
+                            <option value="starter">Förrätt</option>
+                            <option value="main">Huvudrätt</option>
+                            <option value="dessert">Efterrätt</option>
+                        </select>
+                        <!--<label for="company_name">Företagsnamn:</label><br>-->
+                        <input type="text" id="foodName" placeholder="Maträtt">
 
-                    <!--<label for="job_title">Jobbtitel:</label><br>-->
-                    <input type="text" id="description" placeholder="Beskrivning">
+                        <!--<label for="job_title">Jobbtitel:</label><br>-->
+                        <input type="text" id="description" placeholder="Beskrivning">
 
-                    <!--<label for="location">Ort:</label><br>-->
-                    <input type="number" id="price" placeholder="Pris">
+                        <!--<label for="location">Ort:</label><br>-->
+                        <input type="number" id="price" placeholder="Pris">
 
-                    <button id="submit-update" type="submit">Spara</button>
-                </form>
-                <p id="addAlert1"></p>
-                <p id="addAlert2"></p>
-                <article id="starter"></article>
-                <article id="main-menu"></article>
-                <article id="dessert"></article>
-                <p id="alert"></p>
-                <p id="alert2"></p>
-            </div>
+                        <button id="submit-update" type="submit">Spara</button>
+                    </form>
+                    <p id="addAlert1"></p>
+                    <p id="addAlert2"></p>
+                    <article id="starter"></article>
+                    <article id="main-menu"></article>
+                    <article id="dessert"></article>
+                    <p id="alert"></p>
+                    <p id="alert2"></p>
+                </div>
 
-            <!--<button id="menu">Meny</button><button id="edit-menu">Ändra meny</button>-->
-        </article>
-        <article id="adminWorker">
-            <h2>Användare</h2>
-            <p>Acceptera anställdaskonton eller ta bort anställdas tillgång.</p>
-            <div id="write-user">
-                <p id="alert-verify"></p>
-                <article id="verified"></article>
-                <article id="not-verified"></article>
-            </div>
-        </article>
-    </div>
+                <!--<button id="menu">Meny</button><button id="edit-menu">Ändra meny</button>-->
+            </article>
+            <article id="adminWorker">
+                <h2>Användare</h2>
+                <p>Acceptera anställdaskonton eller ta bort anställdas konton.</p>
+                <div id="write-user">
+                    <p id="alert-verify"></p>
+                    <article id="verified"></article>
+                    <article id="not-verified"></article>
+                </div>
+            </article>
+        </div>
     </main>
+    <footer>
+        <article class="footer-div">
+            <h4>Öppettider</h4>
+            <p>Måndag: 10:00 - 21:00</p>
+            <p>Tisdag: 10:00 - 21:00</p>
+            <p>Onsdag: 10:00 - 21:00</p>
+            <p>Torsdag: 10:00 - 21:00</p>
+            <p>Fredag: 10:00 - 23:00</p>
+            <p>Lördag: 10:00 - 23:00</p>
+            <p>Söndag: 10:00 - 19:00</p>
+        </article>
+        <article class="footer-div">
+            <h4>Kontakta oss</h4>
+            <img src="/src/icons/envelope.svg" alt="kontakta med epost" class="icons"><a
+                href="mailto:kontakt@ovik-strandgrillen.se">E-post</a><br>
+            <img src="/src/icons/phone-call.svg" alt="kontakta med telefon" class="icons"><a
+                href="tel:+000000000000">070-00000000</a><br><br>
+            <a href="https://www.facebook.com"><img src="/src/icons/facebook.svg" alt="facebook" class="icons"></a>
+            <a href="https://www.x.com"><img src="/src/icons/twitter-alt-square.svg" alt="x föredetta twitter"
+                    class="icons"></a>
+            <a href="https://www.instagram.com"><img src="/src/icons/instagram.svg" alt="instagram" class="icons"></a>
+            <a href="https://www.youtube.com"><img src="/src/icons/youtube.svg" alt="instagram" class="icons"></a>
+
+        </article>
+        <article class="footer-div">
+            <h4>Adress</h4>
+            <p>Strandgatan 89</p>
+            <p>89153 Örnsköldsvil</p>
+        </article>
+    </footer>
+    <a href="login.html"></a>
+    <a href="admin.html"></a>
 </body>
 
 </html>

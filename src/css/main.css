@@ -2,10 +2,12 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: "Permanent Marker", cursive;
-    font-weight: 400;
-    font-style: normal;
     text-align: center;
+}
+
+p{
+    font-family: "Bad Script", cursive;
+    font-style: normal;
 }
 
 #first-img{
@@ -33,7 +35,13 @@
     z-index: 2;
     border-width: 0 0 2px 0;
     border-style: solid;
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
 
+#form{
+    margin-top: 30px;
 }
 
 header a{
@@ -41,6 +49,7 @@ header a{
     list-style: none;
     color: black;
     font-size: 1.2em;
+    padding: 0 15px 0 15px;
 }
 
 header li{
@@ -52,7 +61,6 @@ margin-top: 8px;
 
 header a:hover{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding: 0 5px 0 5px;
     border-radius: 5px;
 }
 
@@ -62,6 +70,13 @@ header ul{
 
 h1, h2, h3{
     text-align: center;
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h2, h3{
+    margin-top: 30px;
 }
 
 #log, #reg{
@@ -83,7 +98,7 @@ border-width: 1px;
 }
 
 #submit:hover, #submit2:hover{
-background-color: rgb(248, 248, 248);
+background-color: rgb(255, 255, 255);
 box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
@@ -93,26 +108,28 @@ input{
 
 .column{
     display: inline-block;
-    margin: 15px;
+    margin: 0 10px 0 10px;
 }
 
 .price, .kr{
     display: inline-block;
-    margin-left: 15px;
+    margin-left: 5px;
 }
 
 .kr{
     display: inline-block;
-    margin-right: 15px;
+    margin-right: 5px;
     margin-left: 5;
 }
 
-.menu-row{
+.menu-row, .worker-row{
     margin-left: 10%;
     border-width: 0 0 1px 0;
     border-color: black;
     border-style: solid;
     width: 80%;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .update-item {
@@ -134,24 +151,48 @@ input{
 
 #cart {
     position: fixed;
-    bottom: 0;
-    height: 40px;
+    top: 40px;
+    height: 33px;
     width: 100%;
     max-width: 100%;
-    background-color: rgb(127, 151, 212);
-    border-width: 2px 0 0 0;
+    background-color: rgb(101, 128, 164);
+    color: white;
+    border-width: 0 0 2px 0;
     border-style: solid;
     border-color: black;
     display: none;
 
 }
 
+#cart:hover {
+    cursor: pointer;
+    background-color: rgb(144, 164, 187);
+}
+
+.cart-logo {
+    width: 27px;
+    height: 27px;
+    display: inline-block;
+    margin-top: 2px;
+  }
+
+
 .order-item {
     display: inline-block;
+
+}
+
+button{
+    background-color: white;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    padding: 1px 3px 1px 3px;
 }
 
 button:hover {
-    background-color: rgb(158, 177, 203);
+    background-color: rgb(101, 128, 164);
 }
 
 #cart-items {
@@ -171,24 +212,118 @@ button:hover {
 }
 
 #cart-header{
-    height: 40px;
-    max-width: 100%;
-    position: fixed;
-    background-color: white;
-    width: 100%;
-
-    border-width: 0 0 2px 0;
-    border-style: solid; 
+    margin-top: 30px;
+    height: 60px;
+    width: 60px;
+    border-radius: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-#write-out-cart {
+#cart-header:hover{
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
 
+#write-small-cart {
+ display: inline-block;
+ vertical-align: top;
 }
 
 #cart-footer{
-    position: ;
 }
 
 #cart-close{
 
+}
+
+#order-div{
+    display: none;
+}
+
+#menu {
+    border-style: double;
+    border-width: 7px;
+    border-color: black;
+    margin: 5% 10% 5% 10%;
+    /*background-image: url("/src/img/test_menu5.jpg");
+    background-size: contain;
+    background-repeat: repeat;*/
+    font-family: "Bad Script", cursive;
+    font-style: normal;
+}
+
+footer{
+    background-color: rgb(101, 128, 164);
+    border-width: 2px 0 0 0;
+    border-style: solid;
+    border-color: black;
+    color: white;
+    width: 100%;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.footer-div{
+    display: inline-block;
+    width: 33%;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    vertical-align: top;
+}
+
+footer p {
+
+  }
+  
+  footer a{
+    margin-left: 10px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .icons{
+    position: relative;
+    top: 5px;
+    width: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  /*#not-verified{
+    display: none;
+  }*/
+
+@media only screen and (min-width: 1920px){
+    #first-img{
+        object-fit: cover;
+        height: 800px;
+    }
+
+    #grilltext{
+        margin-top: 14%;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    #menu {
+        border-width: 5px;
+        margin: 5% 2% 5% 2%;
+    }
+
+    .footer-div{
+        width: 99%;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        vertical-align: top;
+    }
+
+    .menu-row, .worker-row{
+        margin-left: 2%;
+        border-width: 0 0 1px 0;
+        border-color: black;
+        border-style: solid;
+        width: 96%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
 }

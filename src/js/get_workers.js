@@ -40,7 +40,9 @@ export async function worker() {
 
     if (workerArray.result === "notadmin") {
         const adminWorker = document.getElementById("adminWorker");
+        const adminLink = document.getElementById("admin-link");
         adminWorker.style.display = "none";
+        adminLink.style.display = "none";
     } else {
         //Rensar html
         verifiedArticle.innerHTML = "";

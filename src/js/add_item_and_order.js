@@ -3,10 +3,11 @@
 const orderDiv = document.getElementById("order-div");
 const cartItems = document.getElementById("cart-items");
 const cart = document.getElementById("cart");
-const cartClose = document.getElementById("cart-close");
+const cartHeader = document.getElementById("cart-header");
 const writeOutCart = document.getElementById("write-out-cart");
 const cartFooter = document.getElementById("cart-footer");
 const alertCheckout = document.getElementById("alert-checkout");
+const writeSmallCart = document.getElementById("write-small-cart");
 
 
 let order = [];
@@ -18,8 +19,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
             let id = e.target.id;
             let price = e.target.title;
             order.push({ foodName: id, price: price });
-            document.getElementById(e.target.id).style.backgroundColor = "lightblue";
-
+            //document.getElementById(e.target.id).style.backgroundColor = "lightblue";
+            writeSmallCart.innerHTML = "";
             cart.style.display = "block";
             writeCart(order);
         }
@@ -30,13 +31,16 @@ document.addEventListener("DOMContentLoaded", (e) => {
             let id = e.target.id;
             order.splice(id, 1);
             writeCart(order);
+            if (order.length === 0){
+                cart.style.display = "none";
+            }
         }
     })
 
     cart.addEventListener("click", (e) => {
         cartItems.style.display = "block";
     })
-    cartClose.addEventListener("click", (e) => {
+    cartHeader.addEventListener("click", (e) => {
         cartItems.style.display = "none";
     })
 
@@ -82,6 +86,7 @@ function errorCheck(userName, email) {
 function writeCart(order) {
     writeOutCart.innerHTML = "";
     cartFooter.innerHTML = "";
+
     let totalAmount = 0;
         for (let i = 0; i < order.length; i++) {
 
@@ -93,11 +98,13 @@ function writeCart(order) {
             let p1 = document.createElement("p");
             let p1Text = document.createTextNode(order[i].foodName + ", ");
             p1.appendChild(p1Text);
+            p1.style.textDecoration = "underline";
             p1.classList.add("column");
 
             let p = document.createElement("p");
             let pText = document.createTextNode(order[i].price + " kr");
             p.appendChild(pText);
+            p.style.fontWeight = "bold";
             p.classList.add("column");
 
             let button = document.createElement("button");
@@ -114,11 +121,26 @@ function writeCart(order) {
         }
 
         let p1 = document.createElement("p");
-        let p1Text = document.createTextNode(totalAmount + " kr.");
+        let p1Text = document.createTextNode("Summa: " + totalAmount + " kr.");
         p1.appendChild(p1Text);
         p1.classList.add("totalAmount");
+        p1.style.fontWeight = "bold";
         cartFooter.appendChild(p1);
-    
+
+        let pSmallCart = document.createElement("p");
+        let pSmallCartText = document.createTextNode("Antal: " + order.length);
+        pSmallCart.appendChild(pSmallCartText);
+        pSmallCart.style.fontWeight = "bold";
+        pSmallCart.classList.add("column");
+
+        let pSmallCart2 = document.createElement("p");
+        let pSmallCartText2 = document.createTextNode("Summa: " + totalAmount);
+        pSmallCart2.appendChild(pSmallCartText2);
+        pSmallCart2.style.fontWeight = "bold";
+        pSmallCart2.classList.add("column");
+        
+        writeSmallCart.appendChild(pSmallCart);
+        writeSmallCart.appendChild(pSmallCart2);
 }
 
 //Funktionen skickar med id/index till delete fetch-funktionen och väntar på svar. När svar nås skrivs ett meddelande ut på skärmen

@@ -13,7 +13,8 @@
     <!--Länk till google-fonts typsnitt-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Permanent+Marker&display=swap"
+        rel="stylesheet">
     <!--Favicon-->
     <link rel="icon" type="image/x-icon" sizes="32x32" href="favicon.ico?ver=2.0">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -25,8 +26,8 @@
         <!--Centrerar kategorivalen-->
         <nav class="center1">
             <ul>
-                <li><a href="#log">Logga in</a></li>
-                <li><a href="#reg">Registrera användare</a></li>
+                <li><a href="#h1" id="show-menu">Meny</a></li>
+                <li><a href="#h1" id="show-order-menu">Beställ mat</a></li>
             </ul>
         </nav>
 
@@ -35,29 +36,21 @@
     <main id="main">
         <img src="img/grill.png" id="grilltext" alt="bild med texten grillhörnan i handskriven stil">
         <img src="img/tintedfirst.jpg" id="first-img" alt="Bild på en middag med biffar, grönsaker och bröd">
-        <h1>Grillhörnan</h1>
-        <article id="menu">
-            <h2>Meny</h2>
-            <div id="menu-div">
-                <p id="alert"></p>
-                <article id="starter" class="inline"></article>
-                <article id="main-menu" class="inline"></article>
-                <article id="dessert" class="inline"></article>
+
+        <div>
+            <div id="cart">
+
+                <img src="/src/icons/shopping-cart.svg" alt="Kundkorgen" class="cart-logo">
+                <div id="write-small-cart"></div>
             </div>
-            <div id="order-div">
-                <article id="order-starter" class="inline"></article>
-                <article id="order-main" class="inline"></article>
-                <article id="order-dessert" class="inline"></article>
-            </div>
-        </article>
-        <div id="cart"></div>
-        <div id="cart-items">
-            <div id="cart-header"><button id="cart-close">Stäng</button></div>
-            <h3>Kundkorgen</h3>
-            <p>Alla beställningar hämtas hos oss och betalas på plats.</p>
-            <div id="write-out-cart">
-            </div>
-            <div id="cart-footer"></div>
+            <div id="cart-items">
+                    <img src="/src/icons/square-x.svg" id="cart-header" alt="Stänga Kundkorgen" class="cart-logo">
+                <h3>Kundkorgen</h3>
+                <p>Alla beställningar hämtas hos oss och betalas på plats.</p>
+                <div id="write-out-cart">
+
+                </div>
+                <div id="cart-footer"></div>
 
                 <form id="form">
                     <label for="user_name">Namn:</label><br>
@@ -68,9 +61,64 @@
                     <button id="submit" title="order" type="submit">Beställ</button>
                 </form>
                 <p id="alert-checkout"></p>
+            </div>
+            </div>
 
+            <div id="page-width">
+                <h1 id="h1">Grillhörnan</h1>
+                <!-- <nav id="sub-menu">
+            <ul>
+                <li id="view-menu">Meny</li>
+                <li id="view-order-menu">Beställ mat</li>
+            </ul>
+        </nav>-->
+                <article id="menu">
+                    <div id="menu-div">
+                        <h2>Meny</h2>
+                        <p id="alert"></p>
+                        <article id="starter" class="inline"></article>
+                        <article id="main-menu" class="inline"></article>
+                        <article id="dessert" class="inline"></article>
+                    </div>
+                    <div id="order-div">
+                        <h2>Beställ hämtmat</h2>
+                        <article id="order-starter" class="inline"></article>
+                        <article id="order-main" class="inline"></article>
+                        <article id="order-dessert" class="inline"></article>
+                    </div>
+                </article>
         </div>
     </main>
+    <footer>
+        <article class="footer-div">
+            <h4>Öppettider</h4>
+            <p>Måndag: 10:00 - 21:00</p>
+            <p>Tisdag: 10:00 - 21:00</p>
+            <p>Onsdag: 10:00 - 21:00</p>
+            <p>Torsdag: 10:00 - 21:00</p>
+            <p>Fredag: 10:00 - 23:00</p>
+            <p>Lördag: 10:00 - 23:00</p>
+            <p>Söndag: 10:00 - 19:00</p>
+        </article>
+        <article class="footer-div">
+            <h4>Kontakta oss</h4>
+            <img src="/src/icons/envelope.svg" alt="kontakta med epost" class="icons"><a
+                href="mailto:kontakt@ovik-strandgrillen.se">E-post</a><br>
+            <img src="/src/icons/phone-call.svg" alt="kontakta med telefon" class="icons"><a
+                href="tel:+000000000000">070-00000000</a><br><br>
+            <a href="https://www.facebook.com"><img src="/src/icons/facebook.svg" alt="facebook" class="icons"></a>
+            <a href="https://www.x.com"><img src="/src/icons/twitter-alt-square.svg" alt="x föredetta twitter"
+                    class="icons"></a>
+            <a href="https://www.instagram.com"><img src="/src/icons/instagram.svg" alt="instagram" class="icons"></a>
+            <a href="https://www.youtube.com"><img src="/src/icons/youtube.svg" alt="instagram" class="icons"></a>
+
+        </article>
+        <article class="footer-div">
+            <h4>Adress</h4>
+            <p>Strandgatan 89</p>
+            <p>89153 Örnsköldsvil</p>
+        </article>
+    </footer>
     <a href="login.html"></a>
     <a href="admin.html"></a>
 </body>

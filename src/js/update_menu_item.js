@@ -19,12 +19,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
             const priceEl = document.getElementById("price" + indexId);
             const date = new Date();
 
-            let price = priceEl.textContent.slice(0, -3);
+            //let price = priceEl.textContent.slice(0, -3);
 
             //Letar fel i formuläret med errorCheck funktionen. Utan fel så skapas ett object som skickas till funktionen för POST-anrop
-            if (errorCheck(foodName.textContent, description.textContent, price)) {
+            if (errorCheck(foodName.textContent, description.textContent, priceEl)) {
                 //addAlert1.innerHTML = "";
-                const menu = { indexId: indexId, foodName: foodName.textContent, description: description.textContent, price: price, date: date  };
+                const menu = { indexId: indexId, foodName: foodName.textContent, description: description.textContent, price: priceEl.textContent, date: date  };
                 menuPut(menu);
             }
         }
