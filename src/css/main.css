@@ -5,6 +5,10 @@
     text-align: center;
 }
 
+main{
+    background-color: black;
+}
+
 p{
     font-family: "Bad Script", cursive;
     font-style: normal;
