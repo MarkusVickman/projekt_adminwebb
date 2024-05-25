@@ -75,14 +75,14 @@ export async function menu() {
             p1.appendChild(p1Text);
             p1.contentEditable = true;
             p1.id = "foodName" + menuArray[i]._id;
-            p1.classList.add("column");
+            p1.classList.add("column", "column-edit");
 
             let p = document.createElement("p");
             let pText = document.createTextNode(menuArray[i].price);
             p.appendChild(pText);
             p.contentEditable = true;
             p.id = "price" + menuArray[i]._id;
-            p.classList.add("price");
+            p.classList.add("price", "column-edit");
 
             let kr = document.createElement("p");
             let krText = document.createTextNode(" kr");
@@ -94,7 +94,7 @@ export async function menu() {
             p2.appendChild(p2Text);
             p2.contentEditable = true;
             p2.id = "description" + menuArray[i]._id;
-            //  p2.classList.add("column");
+            p2.classList.add("column-edit");
 
             let p3 = document.createElement("p");
             let p3Text = document.createTextNode("Senast ändrad " + menuArray[i].created.slice(0, 10) + " av " + menuArray[i].username);

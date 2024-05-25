@@ -56,7 +56,7 @@ header li{
 display: inline-block;
 margin-left: 5%;
 margin-right: 5%;
-margin-top: 8px;
+margin-top: 6px;
 }
 
 header a:hover{
@@ -68,11 +68,15 @@ header ul{
 
 }
 
-h1, h2, h3{
+h1, h2, h3, h4{
     text-align: center;
     font-family: "Permanent Marker", cursive;
     font-weight: 400;
     font-style: normal;
+}
+
+h2{
+    text-decoration: underline;
 }
 
 h2, h3{
@@ -80,8 +84,7 @@ h2, h3{
 }
 
 #log, #reg{
-    margin-top: 5%;
-    margin-bottom: 5%;
+    padding-top: 50px;
 }
 
 #submit, #submit2{
@@ -91,24 +94,35 @@ display: block;
 margin-top: 20px;
 padding: 2px 5px 2px 5px;
 background-color: white;
+border-style: none;
 border-radius: 5px;
-border-style: solid;
-border-color: black;
-border-width: 1px;
+box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
 }
 
 #submit:hover, #submit2:hover{
 background-color: rgb(255, 255, 255);
-box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 5px;
 }
 
 input{
     font-family: 'Courier New', Courier, monospace;
+    padding: 1px;
 }
 
 .column{
     display: inline-block;
     margin: 0 10px 0 10px;
+}
+
+.column-edit{
+    border-color: blue;
+    border-radius: 3px;
+    border-width: 1px;
+    border-style: solid;
+    width: auto;
+    margin-top: 3px;
+    padding: 0 5px 0 5px;
+
 }
 
 .price, .kr{
@@ -185,14 +199,14 @@ input{
 button{
     background-color: white;
     border-radius: 5px;
-    border-width: 1px;
-    border-color: black;
-    border-style: solid;
-    padding: 1px 3px 1px 3px;
+    padding: 2px 4px 2px 4px;
+    box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+    border-style: none;
 }
 
 button:hover {
-    background-color: rgb(101, 128, 164);
+    background-color: rgb(249, 249, 249);
+    box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 5px;
 }
 
 #cart-items {
@@ -229,7 +243,15 @@ button:hover {
  vertical-align: top;
 }
 
-#cart-footer{
+select{
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    padding: 2px;
+    border-radius: 2px;
+    position: relative;
+    top: 2px;
 }
 
 #cart-close{
@@ -241,6 +263,7 @@ button:hover {
 }
 
 #menu {
+    background-color: rgb(241, 247, 255);
     border-style: double;
     border-width: 7px;
     border-color: black;
@@ -253,7 +276,7 @@ button:hover {
 }
 
 footer{
-    background-color: rgb(101, 128, 164);
+    background-color: rgb(79, 112, 154);
     border-width: 2px 0 0 0;
     border-style: solid;
     border-color: black;
@@ -269,6 +292,7 @@ footer{
     padding-top: 10px;
     padding-bottom: 20px;
     vertical-align: top;
+
 }
 
 footer p {
@@ -279,6 +303,8 @@ footer p {
     margin-left: 10px;
     text-decoration: none;
     color: white;
+    font-family: "Bad Script", cursive;
+    font-style: normal;
   }
   
   .icons{
