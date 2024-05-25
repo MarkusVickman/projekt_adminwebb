@@ -273,6 +273,7 @@ select{
     background-repeat: repeat;*/
     font-family: "Bad Script", cursive;
     font-style: normal;
+    padding-bottom: 5px;
 }
 
 footer{
