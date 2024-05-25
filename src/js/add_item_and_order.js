@@ -83,11 +83,13 @@ function errorCheck(userName, email) {
 }
 
 
+let totalAmount = 0;
+
 function writeCart(order) {
     writeOutCart.innerHTML = "";
     cartFooter.innerHTML = "";
 
-    let totalAmount = 0;
+    totalAmount = 0;
         for (let i = 0; i < order.length; i++) {
 
             totalAmount = totalAmount + parseInt(order[i].price);
@@ -125,7 +127,7 @@ function writeCart(order) {
         p1.appendChild(p1Text);
         p1.classList.add("totalAmount");
         p1.style.fontWeight = "bold";
-        cartFooter.appendChild(p1);
+        writeOutCart.appendChild(p1);
 
         let pSmallCart = document.createElement("p");
         let pSmallCartText = document.createTextNode("Antal: " + order.length);
@@ -170,6 +172,28 @@ export async function orderPost(orderCheckout) {
     //Resettar formuläret om det är korrekt ifyllt
     document.getElementById("user_name").value = "";
     document.getElementById("email").value = "";
-    alertCheckout.innerHTML = 'Tack för din beställning. Maten är klar om 30 minuter.';
+
+    let pSmallCart1 = document.createElement("p");
+    let pSmallCartText1 = document.createTextNode('Tack för din beställning. Maten är reda att hämtas om 30 minuter.');
+    pSmallCart1.appendChild(pSmallCartText1);
+    pSmallCart1.style.fontWeight = "bold";
+
+    let pSmallCart = document.createElement("p");
+    let pSmallCartText = document.createTextNode("Antal: " + order.length);
+    pSmallCart.appendChild(pSmallCartText);
+    pSmallCart.style.fontWeight = "bold";
+    pSmallCart.classList.add("column");
+
+    let pSmallCart2 = document.createElement("p");
+    let pSmallCartText2 = document.createTextNode("Summa: " + totalAmount);
+    pSmallCart2.appendChild(pSmallCartText2);
+    pSmallCart2.style.fontWeight = "bold";
+    pSmallCart2.classList.add("column");
+    
+    alertCheckout.appendChild(pSmallCart1);
+    alertCheckout.appendChild(pSmallCart);
+    alertCheckout.appendChild(pSmallCart2);
+
+    writeOutCart.innerHTML = ""
     order = [];
 };

@@ -50,6 +50,8 @@ export async function order() {
     hNotVerified.appendChild(hNotVerifiedText);
     orderArticle.appendChild(hNotVerified);
 
+    let totalAmount = 0;
+
     //Om arrayen inte är tom byggs innehållet upp utifrån arrayen som loopas igenom. 
     if (orderArray.length > 0) {
 
@@ -60,7 +62,7 @@ export async function order() {
             for (let j = 0; j < orderArray[i].foods.length; j++) {
                 let p = document.createElement("p");
                 let pText = document.createTextNode(orderArray[i].foods[j].foodName + ", ");
-                p.style.textdecoration = "underlined";
+                p.style.fontWeight = "bold";
                 p.appendChild(pText);
                 p.classList.add("column");
 
@@ -70,9 +72,23 @@ export async function order() {
                 p1.appendChild(p1Text);
                 p1.classList.add("column");
 
-                newDiv.appendChild(p);
-                newDiv.appendChild(p1);
+                let smallDiv = document.createElement("div");
+
+                smallDiv.appendChild(p);
+                smallDiv.appendChild(p1);
+                newDiv.appendChild(smallDiv);
+
+                totalAmount = totalAmount + parseInt(orderArray[i].foods[j].price);
             }
+
+
+
+            let pAmount = document.createElement("p");
+            let pAmountText = document.createTextNode("Summa: " + totalAmount + " kr.");
+            pAmount.appendChild(pAmountText);
+            pAmount.classList.add("totalAmount");
+            pAmount.style.fontWeight = "bold";
+
 
             let p1 = document.createElement("p");
             let p1Text = document.createTextNode(orderArray[i].userName + ", ");
@@ -103,11 +119,18 @@ export async function order() {
             button.id = orderArray[i]._id;
             button.classList.add("remove-order");
 
-            newDiv.appendChild(p1);
-            newDiv.appendChild(p3);
-            newDiv.appendChild(p2);
+            let smallDiv = document.createElement("div");
+            smallDiv.appendChild(p1);
+            smallDiv.appendChild(p3);
 
-            newDiv.appendChild(button);
+            let smallDiv1 = document.createElement("div");
+            smallDiv1.appendChild(p2);
+            smallDiv1.appendChild(button);
+
+            newDiv.appendChild(pAmount);
+            newDiv.appendChild(smallDiv);
+            newDiv.appendChild(smallDiv1);
+
 
             if (orderArray[i].completed === true) {
                 completedOrderArticle.appendChild(newDiv);
