@@ -6,7 +6,8 @@
 }
 
 main{
-    background-color: black;
+    background-color: rgb(181, 159, 143);
+    padding-bottom: 30px;
 }
 
 p{
@@ -287,7 +288,7 @@ footer{
     border-color: black;
     color: white;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 0px;
     font-weight: bold;
 }
 
