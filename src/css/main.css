@@ -6,7 +6,7 @@
 }
 
 #main{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(106, 130, 162);
     padding-bottom: 30px;
 }
 
@@ -14,6 +14,7 @@ p{
     font-family: "Bad Script", cursive;
     font-style: normal;
 }
+
 
 #first-img{
     max-width: 100%;
@@ -46,9 +47,15 @@ p{
 }
 
 #leading-text{
-    background-color: white;
-
+    background-color: rgb(106, 130, 162);
+    color: black;
     padding: 5% 20% 0 20%;
+    font-weight: bold;
+}
+
+.complete, .remove-order{
+    margin: 10px;
+    cursor: pointer;
 }
 
 #form{
@@ -65,10 +72,12 @@ header a{
 
 header li{
 display: inline-block;
-margin-left: 5%;
-margin-right: 5%;
-margin-top: 6px;
+margin-left: 4%;
+margin-right: 4%;
+margin-top: 4px;
 }
+
+
 
 header a:hover{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -104,6 +113,7 @@ h2, h3{
     padding-bottom: 5px;
     margin-top: 15px;
     border-radius: 5px;
+    background-color: white;
 }
 
 #submit, #submit2{
@@ -167,6 +177,11 @@ input{
 
 .update-item {
     margin-right: 10px;
+    cursor: pointer;
+}
+
+.remove-item{
+    cursor: pointer;
 }
 
 #page-width{
@@ -180,6 +195,7 @@ input{
     position: fixed;
     right: 15px;
     top: 10px;
+    cursor: pointer;
 }
 
 #cart {
@@ -282,7 +298,7 @@ select{
 }
 
 #menu {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(106, 130, 162);
     /*border-style: double;
     border-width: 7px;
     border-color: black;*/
@@ -407,7 +423,7 @@ footer p {
     }
 }
 
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 635px){
     #menu {
         border-width: 5px;
         padding: 5% 2% 5% 2%;
@@ -428,5 +444,19 @@ footer p {
         width: 96%;
         padding-top: 5px;
         padding-bottom: 5px;
+    }
+
+    #form{
+        width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #header{
+        height: 70px;
+    }
+
+    #first-link{
+        display: block;
     }
 }
