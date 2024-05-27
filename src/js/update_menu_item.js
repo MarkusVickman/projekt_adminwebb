@@ -59,7 +59,7 @@ function errorCheck(foodName, description, price) {
 }
 
 
-import { menu } from './get_menu';
+//import { menu } from './get_menu';
 
 //Post fetch-anrop som tar in ett objekt som parameter
 export async function menuPut(menu) {

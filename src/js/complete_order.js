@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 
-import { order } from './get_order';
+//import { order } from './get_order';
 
 //Post fetch-anrop som tar in ett objekt som parameter
 export async function completePut(indexId) {

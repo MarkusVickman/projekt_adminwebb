@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 
-import { worker } from './get_workers';
+//import { worker } from './get_workers';
 
 //Post fetch-anrop som tar in ett objekt som parameter
 export async function verifyPut(indexId) {
