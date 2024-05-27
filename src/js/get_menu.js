@@ -165,10 +165,11 @@ export async function menu() {
 //const form = document.getElementById("form");
 //const addAlert1 = document.getElementById("addAlert1");
 //const addAlert2 = document.getElementById("addAlert2");
-const menuDiv = document.getElementById("menu-div");
+
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
+    const menuDiv = document.getElementById("menu-div");
     // Lägg till händelselyssnare på formuläret
     menuDiv.addEventListener("click", (e) => {
        if (e.target.id.slice(0, 6) === "update"){
@@ -188,7 +189,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 const menu = { indexId: indexId, foodName: foodName.textContent, description: description.textContent, price: priceEl.textContent, date: date  };
                 menuPut(menu);
             }
-        }
+       }
+        
     });
 });
 
@@ -212,7 +214,7 @@ function errorCheck(foodName, description, price) {
     }
     //Om fel finns skrivs alla dessa ut på sidan
     else {
-        alert("Fyll i " + inputErrors);
+        alert.innerHTML = ("Fyll i " + inputErrors);
         //addAlert1.innerHTML = "Fyll i " + inputErrors;
         //addAlert2.innerHTML = "";
         return false;
@@ -234,15 +236,10 @@ export async function menuPut(menu) {
     });
     let data = await response.json();
     //När det är klart skrivs ett meddelande ut på skärmen att inlägget är sparat
-    alert = "Menyraden är uppdaterad.";
+    alert.innerHTML = "Menyraden är uppdaterad.";
 
     callMenu();
 }
-
-function callMenu() {
-    menu();
-};
-
 
 
 
@@ -334,7 +331,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         let price = document.getElementById("price").value;
 
         //Letar fel i formuläret med errorCheck funktionen. Utan fel så skapas ett object som skickas till funktionen för POST-anrop
-        if (errorCheck(menyType, foodName, description, price)) {
+        if (errorCheckNewMenu(menyType, foodName, description, price)) {
             addAlert1.innerHTML = "";
             const menu = { menyType: menyType, foodName: foodName, description: description, price: price };
             menuPost(menu);
@@ -348,7 +345,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 //Checkar efter fel i formuläret och skriver ut felmeddelande i så fall annars returnerar true
-function errorCheck(menyType, foodName, description, price) {
+function errorCheckNewMenu(menyType, foodName, description, price) {
     let inputErrors = [];
     //Flera if satser för att välja vilka felmeddelanden som ska tar med
     if (menyType === "") {
