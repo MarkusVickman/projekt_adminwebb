@@ -5,9 +5,15 @@
     text-align: center;
 }
 
-#main{
-    background-color: rgb(106, 130, 162);
-    padding-bottom: 30px;
+main{
+    background-color: rgb(74, 97, 127);
+    padding-bottom: 60px;
+    color: white;
+}
+
+#login-main{
+    color: black;
+    background-color: white;
 }
 
 p{
@@ -46,15 +52,24 @@ p{
     font-style: normal;
 }
 
-#leading-text{
-    background-color: rgb(106, 130, 162);
-    color: black;
-    padding: 5% 20% 0 20%;
+#leading-text, #ending-text{
+    background-color: rgb(74, 97, 127);
+    color: white;
+    padding: 3% 20% 0 20%;
     font-weight: bold;
+}
+
+#ending-text h2{
+    text-decoration: none;
 }
 
 .complete, .remove-order{
     margin: 10px;
+    cursor: pointer;
+}
+
+.remove-worker, .verify{
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -173,6 +188,10 @@ input{
     width: 80%;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+.worker-row{
+    border-color: white;
 }
 
 .update-item {
@@ -298,24 +317,25 @@ select{
 }
 
 #menu {
-    background-color: rgb(106, 130, 162);
+    background-color: rgb(74, 97, 127);
     /*border-style: double;
     border-width: 7px;
     border-color: black;*/
-    padding: 5% 10% 5% 10%;
+    padding: 5% 10% 2% 10%;
     /*background-image: url("/src/img/test_menu5.jpg");
     background-size: contain;
     background-repeat: repeat;*/
     font-family: "Bad Script", cursive;
     font-style: normal;
+    color: black;
 }
 
 footer{
-    background-color: rgb(79, 112, 154);
+    background-color: white;
     border-width: 2px 0 0 0;
     border-style: solid;
     border-color: black;
-    color: white;
+    color: black;
     width: 100%;
     margin-top: 0px;
     font-weight: bold;
@@ -337,7 +357,7 @@ footer p {
   footer a{
     margin-left: 10px;
     text-decoration: none;
-    color: white;
+    color: black;
     font-family: "Bad Script", cursive;
     font-style: normal;
   }
