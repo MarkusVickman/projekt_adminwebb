@@ -1,5 +1,15 @@
 
+const snackBarEl = document.getElementById("snackbar");
+
 //Läser in variabel med ett element där meddelanden ska visas
+function snackBar() {
+  
+    // Add the "show" class to DIV
+    snackBarEl.className = "show";
+  
+    // After 5 seconds, remove the show class from DIV
+    setTimeout(function(){ snackBarEl.className = snackBarEl.className.replace("show", ""), snackBarEl.innerHTML = "" }, 4000);
+  } 
 
 
 
@@ -117,21 +127,6 @@ export async function worker() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Kod för att ta bort arbetare
 //variabler för meddelanden och eventlistener 
 
@@ -151,7 +146,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
 async function removeWorker(id) {
     let data = await workerDelete(id);
     worker();
-    alert2.innerHTML = `En användare är borttaget från databasen.`;
+    snackBarEl.innerHTML = `En användare är borttaget från databasen.`;
+    snackBar();
 }
 
 //Delete fetch-anrop som tar in ett id/index som skickas med till servern för att tas bort från databasen 
@@ -168,18 +164,6 @@ async function workerDelete(id) {
     let data = await response.json();
     return data;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -224,7 +208,8 @@ export async function verifyPut(indexId) {
     });
     let data = await response.json();
     //När det är klart skrivs ett meddelande ut på skärmen att inlägget är sparat
-    alert = "Menyraden är uppdaterad.";
+    snackBarEl.innerHTML = `Användaren är verifierad för åtkomst.`;
+    snackBar();
 
     GetWorker();
 }

@@ -1,7 +1,16 @@
+const snackBarEl = document.getElementById("snackbar");
 
 //Läser in variabel med ett element där meddelanden ska visas
-const alert = document.getElementById("alert");
-const alert2 = document.getElementById("alert2");
+function snackBar() {
+  
+    // Add the "show" class to DIV
+    snackBarEl.className = "show";
+  
+    // After 5 seconds, remove the show class from DIV
+    setTimeout(function(){ snackBarEl.className = snackBarEl.className.replace("show", ""), snackBarEl.innerHTML = "" }, 4000);
+  } 
+
+
 
 //Get fetch-anrop för att hämta array med cv.
 export async function menuGet() {
@@ -159,14 +168,6 @@ export async function menu() {
 
 
 //Kod för att ändra i menyn
-//Fil för att ta in formulärdata, checka efter fel och skicka med ett argument till api-post funktionen
-
-//Deklarerar variabler för formulär och där meddelande ska skrivar ut
-//const form = document.getElementById("form");
-//const addAlert1 = document.getElementById("addAlert1");
-//const addAlert2 = document.getElementById("addAlert2");
-
-
 
 document.addEventListener("DOMContentLoaded", (event) => {
     const menuDiv = document.getElementById("menu-div");
@@ -236,7 +237,8 @@ export async function menuPut(menu) {
     });
     let data = await response.json();
     //När det är klart skrivs ett meddelande ut på skärmen att inlägget är sparat
-    alert.innerHTML = "Menyraden är uppdaterad.";
+    snackBarEl.innerHTML = `Menyraden är uppdaterad.`;
+    snackBar();
 
     callMenu();
 }
@@ -275,7 +277,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
 async function removeMenu(id) {
     let data = await menuDelete(id);
     menu();
-    alert2.innerHTML = `En menyrad är borttaget från databasen.`;
+    snackBarEl.innerHTML = `Menyraden är borttagen.`;
+    snackBar();
 }
 
 
@@ -349,16 +352,16 @@ function errorCheckNewMenu(menyType, foodName, description, price) {
     let inputErrors = [];
     //Flera if satser för att välja vilka felmeddelanden som ska tar med
     if (menyType === "") {
-        inputErrors.push("Typ av rätt ");
+        inputErrors.push("Typ av rätt");
     }
     if (foodName === "") {
-        inputErrors.push("Maträtt ");
+        inputErrors.push(" Maträtt");
     }
     if (description === "") {
-        inputErrors.push("beskrivning ");
+        inputErrors.push(" beskrivning");
     }
     if (price === "") {
-        inputErrors.push("pris ");
+        inputErrors.push(" pris");
     }
 
     //Om fel inte finns skapas en nytt inlägg i databasen och startsidan laddas
@@ -367,7 +370,7 @@ function errorCheckNewMenu(menyType, foodName, description, price) {
     }
     //Om fel finns skrivs alla dessa ut på sidan
     else {
-        addAlert1.innerHTML = "Fyll i " + inputErrors;
+        addAlert1.innerHTML = "Fyll i " + inputErrors + ".";
         addAlert2.innerHTML = "";
         return false;
     }
@@ -388,7 +391,8 @@ export async function menuPost(menu) {
       });
       let data = await response.json();
       //När det är klart skrivs ett meddelande ut på skärmen att inlägget är sparat
-      alert2.innerHTML = "Menyraden är sparad.";
+      snackBarEl.innerHTML = `Menyraden är sparad.`;
+      snackBar();
 
       callMenu();
 }

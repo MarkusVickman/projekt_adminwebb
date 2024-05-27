@@ -1,3 +1,17 @@
+const snackBarEl = document.getElementById("snackbar");
+
+//Läser in variabel med ett element där meddelanden ska visas
+function snackBar() {
+  
+    // Add the "show" class to DIV
+    snackBarEl.className = "show";
+  
+    // After 5 seconds, remove the show class from DIV
+    setTimeout(function(){ snackBarEl.className = snackBarEl.className.replace("show", ""), snackBarEl.innerHTML = "" }, 4000);
+  } 
+
+
+
 
 //variabler för meddelanden och eventlistener 
 const orderDiv = document.getElementById("order-div");
@@ -20,9 +34,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
             let price = e.target.title;
             order.push({ foodName: id, price: price });
             //document.getElementById(e.target.id).style.backgroundColor = "lightblue";
-            writeSmallCart.innerHTML = "";
+
             cart.style.display = "block";
             writeCart(order);
+            snackBarEl.innerHTML = `En vara är tillagd i varukorgen.`;
+            snackBar();
         }
     });
 
@@ -42,6 +58,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
     })
     cartHeader.addEventListener("click", (e) => {
         cartItems.style.display = "none";
+        if (order.length === 0){
+            alertCheckout.innerHTML = "";
+        }
     })
 
     form.addEventListener("submit", (e) => {
@@ -52,7 +71,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
         //Letar fel i formuläret med errorCheck funktionen. Utan fel så skapas ett object som skickas till funktionen för POST-anrop
         if (errorCheck(userName, email)) {
-
+            alertCheckout.innerHTML = "";
+            writeSmallCart.innerHTML = "";
+            cart.style.display = "none";
             const orderCheckout = { foods: order, userName: userName, email: email };
             orderPost(orderCheckout);
 
@@ -88,6 +109,7 @@ let totalAmount = 0;
 function writeCart(order) {
     writeOutCart.innerHTML = "";
     cartFooter.innerHTML = "";
+    writeSmallCart.innerHTML = "";
 
     totalAmount = 0;
         for (let i = 0; i < order.length; i++) {

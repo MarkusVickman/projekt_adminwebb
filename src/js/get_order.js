@@ -1,5 +1,22 @@
 
+
+const snackBarEl = document.getElementById("snackbar");
+
 //Läser in variabel med ett element där meddelanden ska visas
+function snackBar() {
+  
+    // Add the "show" class to DIV
+    snackBarEl.className = "show";
+  
+    // After 5 seconds, remove the show class from DIV
+    setTimeout(function(){ snackBarEl.className = snackBarEl.className.replace("show", ""); }, 4000);
+  } 
+//Läser in variabel med ett element där meddelanden ska visas
+
+
+
+
+
 
 
 
@@ -155,15 +172,6 @@ const completedOrderArticle = document.getElementById("completed-order");
 
 
 
-
-
-
-
-
-
-
-
-
 //Kod för att klarmarkera ordrar
 
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -197,7 +205,8 @@ export async function completePut(indexId) {
     });
     let data = await response.json();
     //När det är klart skrivs ett meddelande ut på skärmen att inlägget är sparat
-    alert = "Menyraden är uppdaterad.";
+    snackBarEl.innerHTML = `En order är klarmarkerad.`;
+    snackBar();
 
     GetOrder();
 }
@@ -241,8 +250,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
 //Funktionen skickar med id/index till delete fetch-funktionen och väntar på svar. När svar nås skrivs ett meddelande ut på skärmen
 async function removeOrder(id) {
     let data = await orderDelete(id);
+
+    snackBarEl.innerHTML = `En order är borttagen.`;
+    snackBar();
     order();
-    //alert2.innerHTML = `En användare är borttaget från databasen.`;
 }
 
 

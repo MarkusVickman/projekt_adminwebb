@@ -6,7 +6,7 @@
 }
 
 #main{
-    background-color: rgb(181, 159, 143);
+    background-color: rgb(255, 255, 255);
     padding-bottom: 30px;
 }
 
@@ -43,6 +43,12 @@ p{
     font-family: "Permanent Marker", cursive;
     font-weight: 400;
     font-style: normal;
+}
+
+#leading-text{
+    background-color: white;
+
+    padding: 5% 20% 0 20%;
 }
 
 #form{
@@ -90,6 +96,14 @@ h2, h3{
 
 #log, #reg{
     padding-top: 50px;
+}
+
+#menu-div, #order-div{ 
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px;
+    padding-top: 1px;
+    padding-bottom: 5px;
+    margin-top: 15px;
+    border-radius: 5px;
 }
 
 #submit, #submit2{
@@ -143,7 +157,7 @@ input{
 
 .menu-row, .worker-row{
     margin-left: 10%;
-    border-width: 0 0 1px 0;
+    border-width: 0 0 2px 0;
     border-color: black;
     border-style: solid;
     width: 80%;
@@ -174,7 +188,7 @@ input{
     height: 33px;
     width: 100%;
     max-width: 100%;
-    background-color: rgb(101, 128, 164);
+    background-color: rgb(79, 112, 154);
     color: white;
     border-width: 0 0 2px 0;
     border-style: solid;
@@ -268,17 +282,16 @@ select{
 }
 
 #menu {
-    background-color: rgb(241, 247, 255);
-    border-style: double;
+    background-color: rgb(255, 255, 255);
+    /*border-style: double;
     border-width: 7px;
-    border-color: black;
-    margin: 5% 10% 5% 10%;
+    border-color: black;*/
+    padding: 5% 10% 5% 10%;
     /*background-image: url("/src/img/test_menu5.jpg");
     background-size: contain;
     background-repeat: repeat;*/
     font-family: "Bad Script", cursive;
     font-style: normal;
-    padding-bottom: 5px;
 }
 
 footer{
@@ -316,6 +329,10 @@ footer p {
   #alert-checkout{
     margin-top: 30px;
   }
+
+  #alert1, #alert2, #addAlert1, #addAlert2, #alert{
+    color: rgb(99, 0, 0);
+  }
   
   .icons{
     position: relative;
@@ -328,6 +345,56 @@ footer p {
   /*#not-verified{
     display: none;
   }*/
+
+
+   /* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+  }
+  
+  /* Show the snackbar when clicking on a button (class added with JavaScript) */
+  #snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 3.5s;
+    animation: fadein 0.5s, fadeout 0.5s 3.5s;
+  }
+  
+  /* Animations to fade the snackbar in and out */
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  } 
+
+
+
 
 @media only screen and (min-width: 1920px){
     #first-img{
@@ -343,7 +410,7 @@ footer p {
 @media only screen and (max-width: 500px){
     #menu {
         border-width: 5px;
-        margin: 5% 2% 5% 2%;
+        padding: 5% 2% 5% 2%;
     }
 
     .footer-div{
