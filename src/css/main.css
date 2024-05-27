@@ -482,4 +482,17 @@ footer p {
     #first-link{
         display: block;
     }
+
+    #leading-text, #ending-text{
+        padding: 3% 5% 0 5%;
+    }
+
+    #grilltext{
+        max-width: 80%;
+        margin-top: 30%;
+    }
+
+    #first-img{
+        margin-top: 70px;
+    }
 }
