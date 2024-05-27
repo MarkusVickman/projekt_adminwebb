@@ -147,3 +147,255 @@ export async function menu() {
         }
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+//Kod för att ändra i menyn
+//Fil för att ta in formulärdata, checka efter fel och skicka med ett argument till api-post funktionen
+
+//Deklarerar variabler för formulär och där meddelande ska skrivar ut
+//const form = document.getElementById("form");
+//const addAlert1 = document.getElementById("addAlert1");
+//const addAlert2 = document.getElementById("addAlert2");
+const menuDiv = document.getElementById("menu-div");
+
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    // Lägg till händelselyssnare på formuläret
+    menuDiv.addEventListener("click", (e) => {
+       if (e.target.id.slice(0, 6) === "update"){
+
+            // Hämta CV-data från formuläret
+            const indexId = e.target.id.substring(6);
+            const foodName = document.getElementById("foodName" + indexId);
+            const description = document.getElementById("description" + indexId);
+            const priceEl = document.getElementById("price" + indexId);
+            const date = new Date();
+
+            //let price = priceEl.textContent.slice(0, -3);
+
+            //Letar fel i formuläret med errorCheck funktionen. Utan fel så skapas ett object som skickas till funktionen för POST-anrop
+            if (errorCheck(foodName.textContent, description.textContent, priceEl)) {
+                //addAlert1.innerHTML = "";
+                const menu = { indexId: indexId, foodName: foodName.textContent, description: description.textContent, price: priceEl.textContent, date: date  };
+                menuPut(menu);
+            }
+        }
+    });
+});
+
+//Checkar efter fel i formuläret och skriver ut felmeddelande i så fall annars returnerar true
+function errorCheck(foodName, description, price) {
+    let inputErrors = [];
+    //Flera if satser för att välja vilka felmeddelanden som ska tar med
+    if (foodName === "") {
+        inputErrors.push("Maträtt ");
+    }
+    if (description === "") {
+        inputErrors.push("beskrivning ");
+    }
+    if (price === "") {
+        inputErrors.push("pris ");
+    }
+
+    //Om fel inte finns skapas en nytt inlägg i databasen och startsidan laddas
+    if (inputErrors.length === 0) {
+        return true;
+    }
+    //Om fel finns skrivs alla dessa ut på sidan
+    else {
+        alert("Fyll i " + inputErrors);
+        //addAlert1.innerHTML = "Fyll i " + inputErrors;
+        //addAlert2.innerHTML = "";
+        return false;
+    }
+}
+
+
+//import { menu } from './get_menu';
+
+//Post fetch-anrop som tar in ett objekt som parameter
+export async function menuPut(menu) {
+    let response = await fetch('https://project-dt207g.azurewebsites.net/protected/menu/edit', {
+        method: 'PUT',
+        headers: {
+            'authorization': 'Bearer ' + sessionStorage.getItem("token"),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(menu)
+    });
+    let data = await response.json();
+    //När det är klart skrivs ett meddelande ut på skärmen att inlägget är sparat
+    alert = "Menyraden är uppdaterad.";
+
+    callMenu();
+}
+
+function callMenu() {
+    menu();
+};
+
+
+
+
+
+
+
+
+
+
+
+
+//kod för att ta bort från menyn
+
+//import { menu } from './get_menu';
+
+
+
+
+//variabler för meddelanden och eventlistener 
+const menuDiv = document.getElementById("menu-div");
+
+document.addEventListener("DOMContentLoaded", (e) => {
+    //Eventlistener som lyssnar efter klick på ta bort knapparna för cv, initierar funktionen removeCV och skickar med id/index som argument
+    menuDiv.addEventListener("click", (e) => {
+        if (e.target.classList.contains("remove-item")) {
+            let id = e.target.id;
+            removeMenu(id);
+        }
+    });
+});
+
+//Funktionen skickar med id/index till delete fetch-funktionen och väntar på svar. När svar nås skrivs ett meddelande ut på skärmen
+async function removeMenu(id) {
+    let data = await menuDelete(id);
+    menu();
+    alert2.innerHTML = `En menyrad är borttaget från databasen.`;
+}
+
+
+
+
+
+
+
+//Delete fetch-anrop som tar in ett id/index som skickas med till servern för att tas bort från databasen 
+async function menuDelete(id) {
+    let response = await fetch(`https://project-dt207g.azurewebsites.net/protected/menu/delete/${id}`, {
+          method: 'DELETE',
+          headers: {
+                'authorization': 'Bearer ' + sessionStorage.getItem("token"),
+                'Content-Type': 'application/json'
+          },
+          body: JSON.stringify()
+    });
+    //Väntar på data och först när den finns görs en retur till funktionen removeCV(id) där den väntar på svar
+    let data = await response.json();
+    return data;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//Kod för att lägga till ny i menyn
+ //Fil för att ta in formulärdata, checka efter fel och skicka med ett argument till api-post funktionen
+
+//Deklarerar variabler för formulär och där meddelande ska skrivar ut
+const form = document.getElementById("form");
+const addAlert1 = document.getElementById("addAlert1");
+const addAlert2 = document.getElementById("addAlert2");
+
+
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    // Lägg till händelselyssnare på formuläret
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        // Hämta CV-data från formuläret
+        let menyType = document.getElementById("menyType").value;
+        let foodName = document.getElementById("foodName").value;
+        let description = document.getElementById("description").value;
+        let price = document.getElementById("price").value;
+
+        //Letar fel i formuläret med errorCheck funktionen. Utan fel så skapas ett object som skickas till funktionen för POST-anrop
+        if (errorCheck(menyType, foodName, description, price)) {
+            addAlert1.innerHTML = "";
+            const menu = { menyType: menyType, foodName: foodName, description: description, price: price };
+            menuPost(menu);
+            //Resetar formuläret om det är korrekt ifyllt
+            document.getElementById("menyType").value = "";
+            document.getElementById("foodName").value = "";
+            document.getElementById("description").value = "";
+            document.getElementById("price").value = "";
+        }
+    });
+});
+
+//Checkar efter fel i formuläret och skriver ut felmeddelande i så fall annars returnerar true
+function errorCheck(menyType, foodName, description, price) {
+    let inputErrors = [];
+    //Flera if satser för att välja vilka felmeddelanden som ska tar med
+    if (menyType === "") {
+        inputErrors.push("Typ av rätt ");
+    }
+    if (foodName === "") {
+        inputErrors.push("Maträtt ");
+    }
+    if (description === "") {
+        inputErrors.push("beskrivning ");
+    }
+    if (price === "") {
+        inputErrors.push("pris ");
+    }
+
+    //Om fel inte finns skapas en nytt inlägg i databasen och startsidan laddas
+    if (inputErrors.length === 0) {
+        return true;
+    }
+    //Om fel finns skrivs alla dessa ut på sidan
+    else {
+        addAlert1.innerHTML = "Fyll i " + inputErrors;
+        addAlert2.innerHTML = "";
+        return false;
+    }
+}
+
+
+//import { menu } from './get_menu';
+
+//Post fetch-anrop som tar in ett objekt som parameter
+export async function menuPost(menu) {
+      let response = await fetch('https://project-dt207g.azurewebsites.net/protected/menu/add', {
+            method: 'POST',
+            headers: {
+                  'authorization': 'Bearer ' + sessionStorage.getItem("token"),
+                  'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(menu)
+      });
+      let data = await response.json();
+      //När det är klart skrivs ett meddelande ut på skärmen att inlägget är sparat
+      alert2.innerHTML = "Menyraden är sparad.";
+
+      callMenu();
+}
+
+function callMenu(){
+    menu();
+};

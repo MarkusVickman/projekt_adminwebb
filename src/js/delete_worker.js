@@ -1,5 +1,5 @@
 
-//import { worker } from './get_workers';
+import { worker } from './get_workers';
 
 
 
@@ -23,12 +23,6 @@ async function removeWorker(id) {
     worker();
     alert2.innerHTML = `En användare är borttaget från databasen.`;
 }
-
-
-
-
-
-
 
 //Delete fetch-anrop som tar in ett id/index som skickas med till servern för att tas bort från databasen 
 async function workerDelete(id) {

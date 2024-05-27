@@ -24,15 +24,17 @@ export async function orderGet() {
 
 
 //fil för att skriva ut från servern/databasen till webplatsens
-//div där cv-data ska skrivas ut
-const orderArticle = document.getElementById("order-article");
-const completedOrderArticle = document.getElementById("completed-order");
+
 
 //När sidan laddas 
 window.onload = order();
 
 //Initieras vid start och efter att ett inlägg tagits bort från webbplatsen
 export async function order() {
+
+    //div där cv-data ska skrivas ut
+const orderArticle = document.getElementById("order-article");
+const completedOrderArticle = document.getElementById("completed-order");
     // Anropa funktionen för att hämta data och väntar på svar
     let orderArray = await orderGet();
 
@@ -50,16 +52,19 @@ export async function order() {
     hNotVerified.appendChild(hNotVerifiedText);
     orderArticle.appendChild(hNotVerified);
 
-    let totalAmount = 0;
 
     //Om arrayen inte är tom byggs innehållet upp utifrån arrayen som loopas igenom. 
     if (orderArray.length > 0) {
 
         for (let i = 0; i < orderArray.length; i++) {
+
+            let totalAmount = 0;
+
             let newDiv = document.createElement("div");
             newDiv.classList.add(`worker-row`);
 
             for (let j = 0; j < orderArray[i].foods.length; j++) {
+
                 let p = document.createElement("p");
                 let pText = document.createTextNode(orderArray[i].foods[j].foodName + ", ");
                 p.style.fontWeight = "bold";
@@ -142,3 +147,117 @@ export async function order() {
         }
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Kod för att klarmarkera ordrar
+
+document.addEventListener("DOMContentLoaded", (event) => {
+
+    const orderArticle = document.getElementById("order-article");
+    // Lägg till händelselyssnare på formuläret
+    orderArticle.addEventListener("click", (e) => {
+       if (e.target.id.slice(0, 8) === "complete"){
+        
+            // Hämta CV-data från formuläret
+            const indexId = e.target.id.substring(8);
+
+            completePut({indexId: indexId});
+        }
+    });
+});
+
+
+//import { order } from './get_order';
+
+//Post fetch-anrop som tar in ett objekt som parameter
+export async function completePut(indexId) {
+
+    let response = await fetch('https://project-dt207g.azurewebsites.net/protected/order/completed', {
+        method: 'PUT',
+        headers: {
+            'authorization': 'Bearer ' + sessionStorage.getItem("token"),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(indexId)
+    });
+    let data = await response.json();
+    //När det är klart skrivs ett meddelande ut på skärmen att inlägget är sparat
+    alert = "Menyraden är uppdaterad.";
+
+    GetOrder();
+}
+
+function GetOrder() {
+    order();
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Kod för att ta bort order
+
+//import { order } from './get_order';
+
+
+//variabler för meddelanden och eventlistener 
+
+
+document.addEventListener("DOMContentLoaded", (e) => {
+    const orderDiv = document.getElementById("orders");
+    
+    //Eventlistener som lyssnar efter klick på ta bort knapparna för cv, initierar funktionen removeCV och skickar med id/index som argument
+    orderDiv.addEventListener("click", (e) => {
+        if (e.target.classList.contains("remove-order")) {
+            let id = e.target.id;
+            removeOrder(id);
+        }
+    });
+});
+
+//Funktionen skickar med id/index till delete fetch-funktionen och väntar på svar. När svar nås skrivs ett meddelande ut på skärmen
+async function removeOrder(id) {
+    let data = await orderDelete(id);
+    order();
+    //alert2.innerHTML = `En användare är borttaget från databasen.`;
+}
+
+
+//Delete fetch-anrop som tar in ett id/index som skickas med till servern för att tas bort från databasen 
+async function orderDelete(id) {
+    let response = await fetch(`https://project-dt207g.azurewebsites.net/protected/order/delete/${id}`, {
+          method: 'DELETE',
+          headers: {
+                'authorization': 'Bearer ' + sessionStorage.getItem("token"),
+                'Content-Type': 'application/json'
+          },
+          body: JSON.stringify()
+    });
+    //Väntar på data och först när den finns görs en retur till funktionen removeCV(id) där den väntar på svar
+    let data = await response.json();
+    return data;
+}
+

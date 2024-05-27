@@ -24,17 +24,17 @@ export async function workerGet() {
 
 
 //fil för att skriva ut från servern/databasen till webplatsens
-//div där cv-data ska skrivas ut
-const verifiedArticle = document.getElementById("verified");
-const notVerifiedArticle = document.getElementById("not-verified");
-
-
 
 //När sidan laddas 
 window.onload = worker();
 
 //Initieras vid start och efter att ett inlägg tagits bort från webbplatsen
 export async function worker() {
+
+    //div där cv-data ska skrivas ut
+    const verifiedArticle = document.getElementById("verified");
+    const notVerifiedArticle = document.getElementById("not-verified");
+
     // Anropa funktionen för att hämta data och väntar på svar
     let workerArray = await workerGet();
 
@@ -107,4 +107,128 @@ export async function worker() {
             }
         }
     }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Kod för att ta bort arbetare
+//variabler för meddelanden och eventlistener 
+
+
+document.addEventListener("DOMContentLoaded", (e) => {
+    const workerDiv = document.getElementById("write-user");
+    //Eventlistener som lyssnar efter klick på ta bort knapparna för cv, initierar funktionen removeCV och skickar med id/index som argument
+    workerDiv.addEventListener("click", (e) => {
+        if (e.target.classList.contains("remove-worker")) {
+            let id = e.target.id;
+            removeWorker(id);
+        }
+    });
+});
+
+//Funktionen skickar med id/index till delete fetch-funktionen och väntar på svar. När svar nås skrivs ett meddelande ut på skärmen
+async function removeWorker(id) {
+    let data = await workerDelete(id);
+    worker();
+    alert2.innerHTML = `En användare är borttaget från databasen.`;
+}
+
+//Delete fetch-anrop som tar in ett id/index som skickas med till servern för att tas bort från databasen 
+async function workerDelete(id) {
+    let response = await fetch(`https://project-dt207g.azurewebsites.net/protected/user/delete/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'authorization': 'Bearer ' + sessionStorage.getItem("token"),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify()
+    });
+    //Väntar på data och först när den finns görs en retur till funktionen removeCV(id) där den väntar på svar
+    let data = await response.json();
+    return data;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Kod för att verifiera användare
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    const userDiv = document.getElementById("write-user");
+    // Lägg till händelselyssnare på formuläret
+    userDiv.addEventListener("click", (e) => {
+        if (e.target.id.slice(0, 6) === "verify") {
+
+            // Hämta CV-data från formuläret
+            const indexId = e.target.id.substring(6);
+
+            verifyPut({ indexId: indexId });
+        }
+    });
+});
+
+
+//import { worker } from './get_workers';
+
+//Post fetch-anrop som tar in ett objekt som parameter
+export async function verifyPut(indexId) {
+
+    let response = await fetch('https://project-dt207g.azurewebsites.net/protected/user/verify', {
+        method: 'PUT',
+        headers: {
+            'authorization': 'Bearer ' + sessionStorage.getItem("token"),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(indexId)
+    });
+    let data = await response.json();
+    //När det är klart skrivs ett meddelande ut på skärmen att inlägget är sparat
+    alert = "Menyraden är uppdaterad.";
+
+    GetWorker();
+}
+
+function GetWorker() {
+    worker();
 };
