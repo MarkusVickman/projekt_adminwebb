@@ -229,7 +229,7 @@ input{
     border-style: solid;
     border-color: black;
     display: none;
-
+    color: white;
 }
 
 #cart:hover {
@@ -244,6 +244,9 @@ input{
     margin-top: 2px;
   }
 
+#cart-items{
+    color: black;
+}
 
 .order-item {
     display: inline-block;
