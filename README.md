@@ -1,5 +1,5 @@
 # Projektwebbplats i kursen Dt207G - Backend-baserad webbutveckling
-Projektet består av flera delar, en mongoDb databas, en node.js/express api-server och en webbplats med en restaurangsida och en adminsida. Koden innehåller många kommentarer som kan svara om fler frågor finns om webbplatsen det går också att läsa readme och ta del av repot till min api-server [klicka här](https://github.com/MarkusVickman/dt207g-project/blob/main/README.md).
+Projektet består av flera delar, en mongoDb databas, en node.js/express api-server och en webbplats med en restaurangsida och en adminsida. En stor det av webbplatsens innehåll hämtas från api-servern och databasen för att sedan på denna webbplats skrivas ut med DOM-manupulation. Koden innehåller många kommentarer som kan svara om fler frågor finns om webbplatsen det går också att läsa readme och ta del av repot till min api-server [klicka här](https://github.com/MarkusVickman/dt207g-project/blob/main/README.md).
 
 ## Webbplatsen
 På den här restaurangwebbplatsen kan du se restaurangens meny och lägga ordrar till restaurangens adminwebbplats. Ordrarna skickas med fetch api-POST.
