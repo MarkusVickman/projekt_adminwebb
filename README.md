@@ -13,7 +13,7 @@ För att testa demowebbplatsen [grillhörnan](https://grillhornan.netlify.app/).
 * När en order är klar skrivs ett meddelande ut i kassan att orden är på gång. Sedan rensas kundkorg och kassan. 
 
 ## Admin webbplatsen
-Inloggning på adminwebb är användarnamn: admin och lösenord: password. Det går att skapa ett nytt konto men det måste först verifieras av admin men får då inte rättigheter till att se andras konton.
+Inloggning på adminwebb är användarnamn: admin och lösenord: password. Det går att skapa ett nytt konto men det måste först verifieras av admin men får då inte rättigheter till att se andras konton. [grillhörnan-adminwebb](https://grillhornan.netlify.app/login).
 
 ### Sidan består av följande:
 * Användarnamn, lösenord och datum för när kontot skapades lagras i en mongoDb-databas med hjälp av fetch api-POST. Lösenordet krypteras över https på vägen till servern och i servern hashas lösenordet så att det inte går att ses av någon.
