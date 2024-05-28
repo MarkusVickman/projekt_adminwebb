@@ -120,6 +120,9 @@ header a:hover {
 .remove-order {
     margin: 10px;
     cursor: pointer;
+    color: black;
+    /*För att knapptext ska visas korrekt i safari på iphone*/
+    -webkit-text-fill-color: black;
 }
 
 /*styling av knappar för ta bort eller verifiera användare*/
@@ -127,6 +130,9 @@ header a:hover {
 .verify {
     margin: 5px;
     cursor: pointer;
+    color: black;
+    /*För att knapptext ska visas korrekt i safari på iphone*/
+    -webkit-text-fill-color: black;
 }
 
 /*Loginsidan divar för logga in och registrera*/
@@ -163,6 +169,9 @@ header a:hover {
     border-style: none;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+    color: black;
+    /*För att knapptext ska visas korrekt i safari på iphone*/
+    -webkit-text-fill-color: black;
 }
 
 /*styling av submitknappar till formulär*/
@@ -170,6 +179,9 @@ header a:hover {
 #submit2:hover {
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 5px;
+    color: black;
+    /*För att knapptext ska visas korrekt i safari på iphone*/
+    -webkit-text-fill-color: black;
 }
 
 /*Styling av select till formulär på admin.html för att lägga till i menyn*/
@@ -182,6 +194,9 @@ select {
     border-radius: 2px;
     position: relative;
     top: 2px;
+    color: black;
+    /*För att knapptext ska visas korrekt i safari på iphone*/
+    -webkit-text-fill-color: black;
 }
 
 /*Styling av webbplatsens olika inputfält*/
@@ -241,11 +256,17 @@ input {
 .update-item {
     margin-right: 10px;
     cursor: pointer;
+    color: black;
+    /*För att knapptext ska visas korrekt i safari på iphone*/
+    -webkit-text-fill-color: black;
 }
 
 /*styling av ta bort knapp till adminmenyn*/
 .remove-item {
     cursor: pointer;
+    color: black;
+    /*För att knapptext ska visas korrekt i safari på iphone*/
+    -webkit-text-fill-color: black;
 }
 
 /*Styling av div som styr breddan av typ hela main*/
@@ -262,6 +283,9 @@ input {
     right: 15px;
     top: 10px;
     cursor: pointer;
+    color: black;
+    /*För att knapptext ska visas korrekt i safari på iphone*/
+    -webkit-text-fill-color: black;
 }
 
 /*styling av lilla kundkorgen*/
@@ -297,6 +321,9 @@ input {
 /*styling av knappar för att lägga till i kundkorg*/
 .order-item {
     display: inline-block;
+    color: black;
+    /*För att knapptext ska visas korrekt i safari på iphone*/
+    -webkit-text-fill-color: black;
 }
 
 /*knappstyling*/
@@ -306,12 +333,18 @@ button {
     padding: 2px 4px 2px 4px;
     box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
     border-style: none;
+    color: black;
+    /*För att knapptext ska visas korrekt i safari på iphone*/
+    -webkit-text-fill-color: black;
 }
 
 /*knappstyling*/
 button:hover {
     background-color: rgb(249, 249, 249);
     box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 5px;
+    color: black;
+    /*För att knapptext ska visas korrekt i safari på iphone*/
+    -webkit-text-fill-color: black;
 }
 
 /*styling av stora kundkorgen/kassan*/
