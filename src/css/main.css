@@ -38,7 +38,7 @@ p{
     margin-top: 20%;
 }
 
-#header{
+#header, #header-admin{
     height: 40px;
     max-width: 100%;
     position: fixed;
@@ -475,7 +475,7 @@ footer p {
         margin-right: auto;
     }
 
-    #header{
+    #header-admin{
         height: 70px;
     }
 
