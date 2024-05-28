@@ -22,7 +22,7 @@ p{
 }
 
 
-#first-img{
+#first-img, #first-img-admin{
     max-width: 100%;
     object-fit: contain;
     width: 4096px;
@@ -489,10 +489,10 @@ footer p {
 
     #grilltext{
         max-width: 80%;
-        margin-top: 30%;
+        margin-top: 20%;
     }
 
-    #first-img{
+    #first-img-admin{
         margin-top: 70px;
     }
 }

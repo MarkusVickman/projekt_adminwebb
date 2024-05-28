@@ -158,7 +158,7 @@ function writeCart(order) {
         pSmallCart.classList.add("column");
 
         let pSmallCart2 = document.createElement("p");
-        let pSmallCartText2 = document.createTextNode("Summa: " + totalAmount);
+        let pSmallCartText2 = document.createTextNode("Summa: " + totalAmount + "kr");
         pSmallCart2.appendChild(pSmallCartText2);
         pSmallCart2.style.fontWeight = "bold";
         pSmallCart2.classList.add("column");
@@ -196,7 +196,7 @@ export async function orderPost(orderCheckout) {
     document.getElementById("email").value = "";
 
     let pSmallCart1 = document.createElement("p");
-    let pSmallCartText1 = document.createTextNode('Tack för din beställning. Maten är reda att hämtas om 30 minuter.');
+    let pSmallCartText1 = document.createTextNode('Tack för din beställning. Maten är redo att hämtas om 30 minuter.');
     pSmallCart1.appendChild(pSmallCartText1);
     pSmallCart1.style.fontWeight = "bold";
 
@@ -207,7 +207,7 @@ export async function orderPost(orderCheckout) {
     pSmallCart.classList.add("column");
 
     let pSmallCart2 = document.createElement("p");
-    let pSmallCartText2 = document.createTextNode("Summa: " + totalAmount);
+    let pSmallCartText2 = document.createTextNode("Summa: " + totalAmount + "kr");
     pSmallCart2.appendChild(pSmallCartText2);
     pSmallCart2.style.fontWeight = "bold";
     pSmallCart2.classList.add("column");
