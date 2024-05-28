@@ -179,7 +179,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 menuPut(menu);
             }
        }
-        
     });
 });
 
