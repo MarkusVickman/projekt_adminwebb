@@ -1,5 +1,6 @@
-//JS-fil med funktion för att samla in inloggnings/registreringsdata från formulär och skicka vidare till rätt api
+/*Fil till login.html för att skapa konton och logga in.*/
 
+//Variabler för meddelande och formulär
 let alertMessage = document.getElementById("alert1");
 let alertMessage2 = document.getElementById("alert2");
 let form1 = document.getElementById("form1");
@@ -21,20 +22,17 @@ function apiLogin(login) {
             return response.json();
         })
         .then(data => {
-          //  if (data.verified === true){
+          //sparar token i sesstionStorage och användare dirigeras till admin.html
                 sessionStorage.setItem('token', data.token);
                 window.location.href = "admin.html";
-            //} else {
-              //  alertMessage.innerHTML = data.message;
-            //}
-
         })
         .catch(error => {
+            //Vid icke okej respons skrivs felmeddelande ut
             alertMessage.innerHTML = 'Fel vid inloggning: ' + error.message;
         });
 };
 
-//Funktion för att registrera en användare i databasen som sedan går att logga in till.
+//Funktion för att registrera en användare i databasen som sedan går att logga in till. skriver också ut information till skrämen
 function apiRegister(login) {
     fetch('https://project-dt207g.azurewebsites.net/account/register', {
         method: 'POST',
@@ -57,8 +55,9 @@ function apiRegister(login) {
         });
 };
 
+
 document.addEventListener("DOMContentLoaded", (event) => {
-    // Lägg till händelselyssnare på formuläret
+    // eventlistener för submit till logga in-formuläret
     form1.addEventListener("submit", (e) => {
         e.preventDefault();
         // Hämta användarnamn i lowerCase och lösenord från formuläret
@@ -78,7 +77,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     form2.addEventListener("submit", (e) => {
         e.preventDefault();
-        // Hämta användarnamn i lowerCase och lösenord från formuläret
+        // Hämta användarnamn i lowerCase och lösenord från formuläret för registrering
         let userName2 = document.getElementById("user_name2").value.toLowerCase();
         let password2 = document.getElementById("password2").value;
 
@@ -105,7 +104,7 @@ function errorCheck(userName, password, check) {
         inputErrors.push(" lösenordet måste vara minst 6 tecken långt ");
     }
 
-    //Om fel inte finns skapas en nytt inlägg i databasen och startsidan laddas
+    //Om fel inte finns returneras true och inloggning eller registrering kan ske.
     if (inputErrors.length === 0) {
         return true;
     }

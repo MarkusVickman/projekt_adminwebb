@@ -1,19 +1,21 @@
+/*Fil till admin.html för att hantera personal.*/
 
+//En notisvariabel till snackbaren
 const snackBarEl = document.getElementById("snackbar");
 
-//Läser in variabel med ett element där meddelanden ska visas
+//En notis variabel som visar meddelande i botten av skärmen vid initiering av funktionen
 function snackBar() {
   
-    // Add the "show" class to DIV
+    // Lägger till klassen "show" till DIV
     snackBarEl.className = "show";
   
-    // After 5 seconds, remove the show class from DIV
+    // Efter 5 sekunder, tar bort klassen "show" från Diven
     setTimeout(function(){ snackBarEl.className = snackBarEl.className.replace("show", ""), snackBarEl.innerHTML = "" }, 4000);
   } 
 
 
 
-//Get fetch-anrop för att hämta array med cv.
+//Get fetch-anrop för att hämta array med anställdas konton. kräver jwt-token
 export async function workerGet() {
     try {
         const response = await fetch('https://project-dt207g.azurewebsites.net/protected/user', {
@@ -23,17 +25,12 @@ export async function workerGet() {
             }
         })
         const result = await response.json();
-        //returnerar json-data till funktionen writeCvToHtml()
-
         return result;
     } catch (error) {
-
         return false;
     }
 }
 
-
-//fil för att skriva ut från servern/databasen till webplatsens
 
 //När sidan laddas 
 window.onload = worker();
@@ -41,19 +38,22 @@ window.onload = worker();
 //Initieras vid start och efter att ett inlägg tagits bort från webbplatsen
 export async function worker() {
 
-    //div där cv-data ska skrivas ut
+    //div där konto-data ska skrivas ut
     const verifiedArticle = document.getElementById("verified");
     const notVerifiedArticle = document.getElementById("not-verified");
 
     // Anropa funktionen för att hämta data och väntar på svar
     let workerArray = await workerGet();
 
+    //Ifall inloggad användare inte är admin så döljs divar med admin info som inte heller skrivs ut
     if (workerArray.result === "notadmin") {
         const adminWorker = document.getElementById("adminWorker");
         const adminLink = document.getElementById("admin-link");
         adminWorker.style.display = "none";
         adminLink.style.display = "none";
-    } else {
+    } 
+    //Om adminkonto används listas konton efter verifierade eller icke. 
+    else {
         //Rensar html
         verifiedArticle.innerHTML = "";
         notVerifiedArticle.innerHTML = "";
@@ -81,23 +81,21 @@ export async function worker() {
                 p1.appendChild(p1Text);
                 p1.classList.add("column");
 
-
                 let p2 = document.createElement("p");
                 let p2Text = document.createTextNode("Skapad " + workerArray[i].created.slice(0, 10));
                 p2.appendChild(p2Text);
                 p2.classList.add("column");
 
+                //Knappar skapas för att verifiera användare
                 let buttonVerify = document.createElement("button");
                 let buttonVerifyText = document.createTextNode("Verifiera");
                 buttonVerify.appendChild(buttonVerifyText);
                 buttonVerify.id = ("verify" + workerArray[i]._id);
                 buttonVerify.classList.add("verify");
 
-
-
-
                 newDiv.appendChild(p1);
                 newDiv.appendChild(p2);
+                //för icke admin konton ges också en knapp för att ta bort användare.
                 if (workerArray[i].username !== "admin") {
                     let button = document.createElement("button");
                     let buttonText = document.createTextNode("Ta bort");
@@ -107,6 +105,7 @@ export async function worker() {
                     newDiv.appendChild(button);
                 }
 
+                //Utifrån verifierad eller ej visas informationen i olika divar.
                 if (workerArray[i].verified === true) {
                     verifiedArticle.appendChild(newDiv);
                 }
@@ -125,15 +124,10 @@ export async function worker() {
 
 
 
-
-
 //Kod för att ta bort arbetare
-//variabler för meddelanden och eventlistener 
-
-
 document.addEventListener("DOMContentLoaded", (e) => {
     const workerDiv = document.getElementById("write-user");
-    //Eventlistener som lyssnar efter klick på ta bort knapparna för cv, initierar funktionen removeCV och skickar med id/index som argument
+    //Eventlistener som lyssnar efter klick på ta bort knapparna för användare, initierar funktionen removeWorker och skickar med id/index som argument
     workerDiv.addEventListener("click", (e) => {
         if (e.target.classList.contains("remove-worker")) {
             let id = e.target.id;
@@ -142,7 +136,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     });
 });
 
-//Funktionen skickar med id/index till delete fetch-funktionen och väntar på svar. När svar nås skrivs ett meddelande ut på skärmen
+//Funktionen skickar med id/index till delete fetch-funktionen och väntar på svar. När svar nås skrivs ett meddelande ut på skärmen. konto listan laddas också om.
 async function removeWorker(id) {
     let data = await workerDelete(id);
     worker();
@@ -150,7 +144,7 @@ async function removeWorker(id) {
     snackBar();
 }
 
-//Delete fetch-anrop som tar in ett id/index som skickas med till servern för att tas bort från databasen 
+//Delete fetch-anrop som tar in ett id/index som skickas med till servern för att tas bort från databasen. jwt-token krävs
 async function workerDelete(id) {
     let response = await fetch(`https://project-dt207g.azurewebsites.net/protected/user/delete/${id}`, {
         method: 'DELETE',
@@ -160,7 +154,7 @@ async function workerDelete(id) {
         },
         body: JSON.stringify()
     });
-    //Väntar på data och först när den finns görs en retur till funktionen removeCV(id) där den väntar på svar
+    //Väntar på data och först när den finns görs en retur till funktionen där den väntar på svar
     let data = await response.json();
     return data;
 }
@@ -172,30 +166,23 @@ async function workerDelete(id) {
 
 
 
-
-
-
-
 //Kod för att verifiera användare
-
 document.addEventListener("DOMContentLoaded", (event) => {
     const userDiv = document.getElementById("write-user");
-    // Lägg till händelselyssnare på formuläret
+    // om target id börjar på verify hämtas id från samma sträng minus "verify"
     userDiv.addEventListener("click", (e) => {
         if (e.target.id.slice(0, 6) === "verify") {
 
             // Hämta CV-data från formuläret
             const indexId = e.target.id.substring(6);
-
+            //initierar Put med id
             verifyPut({ indexId: indexId });
         }
     });
 });
 
 
-//import { worker } from './get_workers';
-
-//Post fetch-anrop som tar in ett objekt som parameter
+//Post fetch-anrop som tar in ett objekt som parameter. authorizeras med jwt-token
 export async function verifyPut(indexId) {
 
     let response = await fetch('https://project-dt207g.azurewebsites.net/protected/user/verify', {
@@ -207,10 +194,9 @@ export async function verifyPut(indexId) {
         body: JSON.stringify(indexId)
     });
     let data = await response.json();
-    //När det är klart skrivs ett meddelande ut på skärmen att inlägget är sparat
+    //När det är klart skrivs ett meddelande ut på skärmen att inlägget är sparat. Användardiven laddas om
     snackBarEl.innerHTML = `Användaren är verifierad för åtkomst.`;
     snackBar();
-
     GetWorker();
 }
 

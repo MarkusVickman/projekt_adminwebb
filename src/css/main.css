@@ -1,35 +1,83 @@
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     text-align: center;
 }
 
-main{
+/*lite olika styling för rubriker*/
+h1,
+h2,
+h3,
+h4 {
+    text-align: center;
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h2 {
+    text-decoration: underline;
+}
+
+h2,
+h3 {
+    margin-top: 30px;
+}
+
+/*styling av p-element*/
+p {
+    font-family: "Bad Script", cursive;
+    font-style: normal;
+}
+
+/*Styling av main*/
+main {
     background-color: rgb(74, 97, 127);
     padding-bottom: 60px;
     color: white;
 }
 
-#login-main{
+/*styling av main för login.html*/
+#login-main {
     color: black;
     background-color: white;
 }
 
-p{
-    font-family: "Bad Script", cursive;
-    font-style: normal;
+/*styling av header länkar*/
+header a {
+    text-decoration: underline;
+    list-style: none;
+    color: black;
+    font-size: 1.2em;
+    padding: 0 15px 0 15px;
 }
 
+/*styling av header lista/meny*/
+header li {
+    display: inline-block;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 4px;
+}
 
-#first-img, #first-img-admin{
+/*styling av header länkar*/
+header a:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+}
+
+/*styling av hero-bilden*/
+#first-img,
+#first-img-admin {
     max-width: 100%;
     object-fit: contain;
     width: 4096px;
     z-index: 0;
 }
 
-#grilltext{
+/*styling av textlogo längst upp på index och admin*/
+#grilltext {
     position: absolute;
     width: 700px;
     max-width: 90%;
@@ -38,7 +86,9 @@ p{
     margin-top: 20%;
 }
 
-#header, #header-admin{
+/*styling av header till alla sidor*/
+#header,
+#header-admin {
     height: 40px;
     max-width: 100%;
     position: fixed;
@@ -52,77 +102,42 @@ p{
     font-style: normal;
 }
 
-#leading-text, #ending-text{
+/*styling av text som beskriver restaurangen på index-sidan*/
+#leading-text,
+#ending-text {
     background-color: rgb(74, 97, 127);
     color: white;
     padding: 3% 20% 0 20%;
     font-weight: bold;
 }
 
-#ending-text h2{
+#ending-text h2 {
     text-decoration: none;
 }
 
-.complete, .remove-order{
+/*styling av knappar för att ta bort eller klarmarkera ordrar*/
+.complete,
+.remove-order {
     margin: 10px;
     cursor: pointer;
 }
 
-.remove-worker, .verify{
+/*styling av knappar för ta bort eller verifiera användare*/
+.remove-worker,
+.verify {
     margin: 5px;
     cursor: pointer;
 }
 
-#form{
-    margin-top: 30px;
-}
-
-header a{
-    text-decoration: underline;
-    list-style: none;
-    color: black;
-    font-size: 1.2em;
-    padding: 0 15px 0 15px;
-}
-
-header li{
-display: inline-block;
-margin-left: 4%;
-margin-right: 4%;
-margin-top: 4px;
-}
-
-
-
-header a:hover{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 5px;
-}
-
-header ul{
-
-}
-
-h1, h2, h3, h4{
-    text-align: center;
-    font-family: "Permanent Marker", cursive;
-    font-weight: 400;
-    font-style: normal;
-}
-
-h2{
-    text-decoration: underline;
-}
-
-h2, h3{
-    margin-top: 30px;
-}
-
-#log, #reg{
+/*Loginsidan divar för logga in och registrera*/
+#log,
+#reg {
     padding-top: 50px;
 }
 
-#menu-div, #order-div{ 
+/*Styling av meny-divarna som separerar ordermenyn och menyn på index.html-sidan*/
+#menu-div,
+#order-div {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px;
     padding-top: 1px;
     padding-bottom: 5px;
@@ -131,34 +146,58 @@ h2, h3{
     background-color: white;
 }
 
-#submit, #submit2{
-margin-left: auto;
-margin-right: auto;
-display: block;
-margin-top: 20px;
-padding: 2px 5px 2px 5px;
-background-color: white;
-border-style: none;
-border-radius: 5px;
-box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
+/*styling av formulär i kundkorgen/kassan och för att skapa nya maträtter i admin*/
+#form {
+    margin-top: 30px;
 }
 
-#submit:hover, #submit2:hover{
-background-color: rgb(255, 255, 255);
-box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 5px;
+/*styling av submitknappar till formulär*/
+#submit,
+#submit2 {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 20px;
+    padding: 2px 5px 2px 5px;
+    background-color: white;
+    border-style: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 2px;
 }
 
-input{
+/*styling av submitknappar till formulär*/
+#submit:hover,
+#submit2:hover {
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 5px;
+}
+
+/*Styling av select till formulär på admin.html för att lägga till i menyn*/
+select {
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    padding: 2px;
+    border-radius: 2px;
+    position: relative;
+    top: 2px;
+}
+
+/*Styling av webbplatsens olika inputfält*/
+input {
     font-family: 'Courier New', Courier, monospace;
     padding: 1px;
 }
 
-.column{
+/*styling av kolumner i menyerna*/
+.column {
     display: inline-block;
     margin: 0 10px 0 10px;
 }
 
-.column-edit{
+/*styling av kolumner som kan redigeras på adminsidan*/
+.column-edit {
     border-color: blue;
     border-radius: 3px;
     border-width: 1px;
@@ -166,21 +205,25 @@ input{
     width: auto;
     margin-top: 3px;
     padding: 0 5px 0 5px;
-
 }
 
-.price, .kr{
+/*styling för visning av kr och pris i menyn för admin*/
+.price,
+.kr {
     display: inline-block;
     margin-left: 5px;
 }
 
-.kr{
+/*styling för visning av kr i menyn för admin*/
+.kr {
     display: inline-block;
     margin-right: 5px;
     margin-left: 5;
 }
 
-.menu-row, .worker-row{
+/*Styling av menyrader och användarkontorader*/
+.menu-row,
+.worker-row {
     margin-left: 10%;
     border-width: 0 0 2px 0;
     border-color: black;
@@ -190,33 +233,38 @@ input{
     padding-bottom: 5px;
 }
 
-.worker-row{
+.worker-row {
     border-color: white;
 }
 
+/*styling av uppdatera knapp till adminmenyn*/
 .update-item {
     margin-right: 10px;
     cursor: pointer;
 }
 
-.remove-item{
+/*styling av ta bort knapp till adminmenyn*/
+.remove-item {
     cursor: pointer;
 }
 
-#page-width{
+/*Styling av div som styr breddan av typ hela main*/
+#page-width {
     width: 1400px;
     margin-left: auto;
     margin-right: auto;
     max-width: 100%;
 }
 
-#logout-btn{
+/*styling av logga ut-knappen för adminsidan*/
+#logout-btn {
     position: fixed;
     right: 15px;
     top: 10px;
     cursor: pointer;
 }
 
+/*styling av lilla kundkorgen*/
 #cart {
     position: fixed;
     top: 40px;
@@ -232,28 +280,27 @@ input{
     color: white;
 }
 
+/*styling av lilla kundkorgen*/
 #cart:hover {
     cursor: pointer;
     background-color: rgb(144, 164, 187);
 }
 
+/*styling av logo i form av en kundvagn*/
 .cart-logo {
     width: 27px;
     height: 27px;
     display: inline-block;
     margin-top: 2px;
-  }
-
-#cart-items{
-    color: black;
 }
 
+/*styling av knappar för att lägga till i kundkorg*/
 .order-item {
     display: inline-block;
-
 }
 
-button{
+/*knappstyling*/
+button {
     background-color: white;
     border-radius: 5px;
     padding: 2px 4px 2px 4px;
@@ -261,12 +308,15 @@ button{
     border-style: none;
 }
 
+/*knappstyling*/
 button:hover {
     background-color: rgb(249, 249, 249);
     box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 5px;
 }
 
+/*styling av stora kundkorgen/kassan*/
 #cart-items {
+    color: black;
     display: none;
     position: fixed;
     top: 0;
@@ -278,11 +328,13 @@ button:hover {
     z-index: 3;
 }
 
+/*styling av stora kundkorgen/kassan*/
 #cart-items h3 {
     margin-top: 70px;
 }
 
-#cart-header{
+/*styling av stänga bilden till kassan*/
+#cart-header {
     margin-top: 30px;
     height: 60px;
     width: 60px;
@@ -290,50 +342,43 @@ button:hover {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-#cart-header:hover{
+/*styling av stänga bilden till kassan*/
+#cart-header:hover {
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
+/*styling av lilla kundkorgen*/
 #write-small-cart {
- display: inline-block;
- vertical-align: top;
+    display: inline-block;
+    vertical-align: top;
 }
 
-select{
-    background-color: white;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    padding: 2px;
-    border-radius: 2px;
-    position: relative;
-    top: 2px;
-}
-
-#cart-close{
-
-}
-
-#order-div{
+/*döljer ordermenyn vid start. visas med JS*/
+#order-div {
     display: none;
 }
 
+/*styling av omslutande div för hela menyn och de den innehåller*/
 #menu {
     background-color: rgb(74, 97, 127);
-    /*border-style: double;
-    border-width: 7px;
-    border-color: black;*/
     padding: 5% 10% 2% 10%;
-    /*background-image: url("/src/img/test_menu5.jpg");
-    background-size: contain;
-    background-repeat: repeat;*/
     font-family: "Bad Script", cursive;
     font-style: normal;
     color: black;
 }
 
-footer{
+/*styling av felmeddelande, lite tveksam till färgvalet*/
+#alert1,
+#alert2,
+#addAlert1,
+#addAlert2,
+#alert {
+    color: rgb(99, 0, 0);
+}
+
+/*styling av footer*/
+footer {
     background-color: white;
     border-width: 2px 0 0 0;
     border-style: solid;
@@ -344,7 +389,8 @@ footer{
     font-weight: bold;
 }
 
-.footer-div{
+/*styling av de tre divarna som är i footern*/
+.footer-div {
     display: inline-block;
     width: 33%;
     padding-top: 10px;
@@ -353,113 +399,166 @@ footer{
 
 }
 
-footer p {
-
-  }
-  
-  footer a{
+/*styling av länkar i footer*/
+footer a {
     margin-left: 10px;
     text-decoration: none;
     color: black;
     font-family: "Bad Script", cursive;
     font-style: normal;
-  }
+}
 
-  #alert-checkout{
+/*meddelande vid utcheckning i kassan*/
+#alert-checkout {
     margin-top: 30px;
-  }
+}
 
-  #alert1, #alert2, #addAlert1, #addAlert2, #alert{
-    color: rgb(99, 0, 0);
-  }
-  
-  .icons{
+/*ikoner i footer för kontakter och socialamedier*/
+.icons {
     position: relative;
     top: 5px;
     width: 20px;
     margin-right: 5px;
     margin-left: 5px;
-  }
+}
 
-  /*#not-verified{
-    display: none;
-  }*/
-
-
-   /* The snackbar - position it at the bottom and in the middle of the screen */
+/* notisbaren som visas i botten center av skärmen */
 #snackbar {
-    visibility: hidden; /* Hidden by default. Visible on click */
-    min-width: 250px; /* Set a default minimum width */
-    margin-left: -125px; /* Divide value of min-width by 2 */
-    background-color: #333; /* Black background color */
-    color: #fff; /* White text color */
-    text-align: center; /* Centered text */
-    border-radius: 2px; /* Rounded borders */
-    padding: 16px; /* Padding */
-    position: fixed; /* Sit on top of the screen */
-    z-index: 1; /* Add a z-index if needed */
-    left: 50%; /* Center the snackbar */
-    bottom: 30px; /* 30px from the bottom */
-  }
-  
-  /* Show the snackbar when clicking on a button (class added with JavaScript) */
-  #snackbar.show {
-    visibility: visible; /* Show the snackbar */
-    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
-    However, delay the fade out process for 2.5 seconds */
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+}
+
+/* Visar snackbar när klass läggs till i javascript. Används för att visa notiser */
+#snackbar.show {
+    visibility: visible;
+    /* animering för visning på 0.5sek sedan fördröjning i 3.5sek innan den börjar fadeout igen */
     -webkit-animation: fadein 0.5s, fadeout 0.5s 3.5s;
     animation: fadein 0.5s, fadeout 0.5s 3.5s;
-  }
-  
-  /* Animations to fade the snackbar in and out */
-  @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  }
-  
-  @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  } 
+}
+
+/* Animeringarna som fadar snackbaren anpassad för flera olika enheter */
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
 
 
 
+/*media querie för extra breda skärmar*/
+@media only screen and (min-width: 1920px) {
 
-@media only screen and (min-width: 1920px){
-    #first-img{
+    /*bild som är täckande längst upp på sidan*/
+    #first-img {
         object-fit: cover;
         height: 800px;
     }
 
-    #grilltext{
+    /*bild med logotyp/text som är längt upp på sidan*/
+    #grilltext {
         margin-top: 14%;
     }
 }
 
-@media only screen and (max-width: 635px){
+/*Media querie för visning på smala skärmar*/
+@media only screen and (max-width: 635px) {
+
+    /*Admin headern är lite högre än vanliga i mobilläget för att alternativen ska få plats*/
+    #header-admin {
+        height: 70px;
+    }
+
+    /*Första länken i huvudmenyn visas som block istället för inline i mobilläget*/
+    #first-link {
+        display: block;
+    }
+
+    /*formatering av textstycken för att presentera företaget*/
+    #leading-text,
+    #ending-text {
+        padding: 3% 5% 0 5%;
+    }
+
+    /*bild med logotyp/text som är längt upp på sidan*/
+    #grilltext {
+        max-width: 80%;
+        margin-top: 20%;
+    }
+
+    /*bild som är täckande längst upp på sidan*/
+    #first-img-admin {
+        margin-top: 70px;
+    }
+
+    /*Styling av yttre menydiven*/
     #menu {
         border-width: 5px;
         padding: 5% 2% 5% 2%;
     }
 
-    .footer-div{
+    /*styling av de tre divarna som är i footern*/
+    .footer-div {
         width: 99%;
         padding-top: 10px;
         padding-bottom: 20px;
         vertical-align: top;
     }
 
-    .menu-row, .worker-row{
+    /*styling av raderna som byggs upp för menyrader och rader med användarkonton*/
+    .menu-row,
+    .worker-row {
         margin-left: 2%;
         border-width: 0 0 1px 0;
         border-color: black;
@@ -469,30 +568,10 @@ footer p {
         padding-bottom: 5px;
     }
 
-    #form{
+    /*styling av formulär i kundkorgen/kassan och för att skapa nya maträtter i admin*/
+    #form {
         width: 200px;
         margin-left: auto;
         margin-right: auto;
-    }
-
-    #header-admin{
-        height: 70px;
-    }
-
-    #first-link{
-        display: block;
-    }
-
-    #leading-text, #ending-text{
-        padding: 3% 5% 0 5%;
-    }
-
-    #grilltext{
-        max-width: 80%;
-        margin-top: 20%;
-    }
-
-    #first-img-admin{
-        margin-top: 70px;
     }
 }

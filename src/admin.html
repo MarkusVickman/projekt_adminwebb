@@ -5,18 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grillhörnan</title>
-    <!--Länk till script-fil-->
+    <!--Länk till script-filer-->
     <script src="js/get_menu.js" type="module"></script>
-    <!--<script src="js/new_menu_item.js" type="module"></script>
-    <script src="js/update_menu_item.js" type="module"></script>
-    <script src="js/delete_menu_item.js" type="module"></script>-->
     <script src="js/verify.js" type="module"></script>
     <script src="js/get_workers.js" type="module"></script>
-    <!--<script src="js/verify_worker.js" type="module"></script>
-    <script src="js/delete_worker.js" type="module"></script>-->
     <script src="js/get_order.js" type="module"></script>
-    <!--<script src="js/complete_order.js" type="module"></script>
-    <script src="js/delete_order.js" type="module"></script>-->
     <!--Länk till css-fil-->
     <link rel="stylesheet" href="css/main.css">
     <!--Länk till google-fonts typsnitt-->
@@ -31,8 +24,8 @@
 
 <body>
     <header id="header-admin">
-        <!--Centrerar kategorivalen-->
-        <nav class="center1">
+        <!--Menyn-->
+        <nav>
             <ul>
                 <li id="first-link"><a href="#page-width">Beställningar</a></li>
                 <li><a href="#menu">Meny</a></li>
@@ -45,64 +38,59 @@
     <main id="main">
         <img src="img/grill.png" id="grilltext" alt="bild med texten grillhörnan i handskriven stil">
         <img src="img/tintedfirst.jpg" id="first-img-admin" alt="Bild på en middag med biffar, grönsaker och bröd">
+        <!--Smalnar av sidan för att anpassa till flera storlekar-->
         <div id="page-width">
             <h1>Grillhörnan</h1>
             <p>Administratörswebbplatsen för restaurangen Grillhörnan.</p>
+            <!--Här listas beställningar-->
             <article id="orders">
                 <h2>Beställningar</h2>
                 <div id="order-article"></div>
                 <div id="completed-order"></div>
-
             </article>
 
+            <!--Här listas menyn-->
             <article id="menu">
                 <div id="menu-div">
                     <h2>Meny</h2>
-                    <p>Här kan du lägga till, ändra eller ta bort i restaurangensmeny. För att ändra är 
+                    <p>Här kan du lägga till, ändra eller ta bort i restaurangensmeny. För att ändra är
                         det bara att ändra direkt i textfälten och uppdatera.
                     </p>
-
+                    <!--Formulär för att lägga till i menyn-->
                     <form id="form">
-                        <!-- <label for="foodType">Choose a car:</label>-->
-
                         <select name="menyType" id="menyType">
                             <option value="">Välj typ av rätt</option>
                             <option value="starter">Förrätt</option>
                             <option value="main">Huvudrätt</option>
                             <option value="dessert">Efterrätt</option>
                         </select>
-                        <!--<label for="company_name">Företagsnamn:</label><br>-->
                         <input type="text" id="foodName" placeholder="Maträtt">
-
-                        <!--<label for="job_title">Jobbtitel:</label><br>-->
                         <input type="text" id="description" placeholder="Beskrivning">
-
-                        <!--<label for="location">Ort:</label><br>-->
                         <input type="number" id="price" placeholder="Pris">
-
                         <button id="submit-update" type="submit">Spara</button>
                     </form>
+                    <!--Felmeddelande till formulär-->
                     <p id="addAlert1"></p>
                     <p id="addAlert2"></p>
+                    <!--Här skrivs menyn ut-->
                     <article id="starter"></article>
                     <article id="main-menu"></article>
                     <article id="dessert"></article>
                 </div>
-
-                <!--<button id="menu">Meny</button><button id="edit-menu">Ändra meny</button>-->
             </article>
+            <!--Artikel för att administrera konton till admin -->
             <article id="adminWorker">
                 <h2>Användare</h2>
                 <p>Acceptera anställdaskonton eller ta bort anställdas konton.</p>
+                <!--Här skrivs användare ut-->
                 <div id="write-user">
-                    <!--<p id="alert-verify"></p>-->
                     <article id="verified"></article>
                     <article id="not-verified"></article>
                 </div>
             </article>
         </div>
     </main>
-    <!-- The actual snackbar -->
+    <!-- Notisdiv för snackbar -->
     <div id="snackbar"></div>
     <footer>
         <article class="footer-div">

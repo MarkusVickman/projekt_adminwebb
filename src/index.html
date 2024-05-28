@@ -23,7 +23,7 @@
 <body>
     <header id="header">
         <!--Centrerar kategorivalen-->
-        <nav class="center1">
+        <nav>
             <ul>
                 <li><a href="#menu" id="show-menu">Meny</a></li>
                 <li><a href="#menu" id="show-order-menu">Beställ mat</a></li>
@@ -36,21 +36,22 @@
         <img src="img/grill.png" id="grilltext" alt="bild med texten grillhörnan i handskriven stil">
         <img src="img/tintedfirst.jpg" id="first-img" alt="Bild på en middag med biffar, grönsaker och bröd">
 
+        <!--Div med hela kundkorgen. Både litet läge och kassan.-->
         <div>
+            <!--Lilla kundkorgen-->
             <div id="cart">
-
                 <img src="/src/icons/shopping-cart.svg" alt="Kundkorgen" class="cart-logo">
                 <div id="write-small-cart"></div>
             </div>
+            <!--Kassan-->
             <div id="cart-items">
                 <img src="/src/icons/square-x.svg" id="cart-header" alt="Stänga Kundkorgen" class="cart-logo">
                 <h3>Kundkorgen</h3>
                 <p>Alla beställningar hämtas hos oss och betalas på plats.</p>
-                <div id="write-out-cart">
-
-                </div>
+                <!--skriva ut kassan-->
+                <div id="write-out-cart"></div>
                 <div id="cart-footer"></div>
-
+                <!--Kassa formulär-->
                 <form id="form">
                     <label for="user_name">Namn:</label><br>
                     <input type="text" id="user_name">
@@ -62,8 +63,9 @@
                 <p id="alert-checkout"></p>
             </div>
         </div>
-
+        <!--Smalnar av sidan för att anpassa till flera storlekar-->
         <div id="page-width">
+            <!--Artiklar med inledande och företagsbeskrivande text-->
             <article id="leading-text">
                 <h1 id="h1">Grillhörnan</h1>
                 <p>I en avslappnad miljö nere vid kajen i Örnsköldsvik centrum kan du avnjuta mat hos oss. Vi på Grillhörnan brinner för kolgrillad mat. Många av våra rätter tar inspiration från det turkiska och grekiska köken. Om du hellre vill avnjuta maten hemma går det bra att lägga en beställning och hämta upp maten efter ca 30 minuter.
@@ -75,6 +77,7 @@
                     av våran passion för grillad mat.
                 </p>
             </article>
+            <!--Meny-divar för både meny och hämtmeny-->
             <article id="menu">
                 <div id="menu-div">
                     <h2>Meny</h2>
@@ -92,7 +95,7 @@
             </article>
         </div>
     </main>
-        <!-- The actual snackbar -->
+        <!-- Notisdiv för snackbar -->
         <div id="snackbar"></div>
     <footer>
         <article class="footer-div">
