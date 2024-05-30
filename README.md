@@ -26,7 +26,7 @@ Inloggning på adminwebb är användarnamn: admin och lösenord: password. Det g
   * Det går även att ta bort användare där in för specifik användare hämtas från ta bort-knappen som då skickas med i ett fetch api-DELETE anrop för att ta bort användare.
  
 ### Uppbyggnad
-* Webbplatsen skapades i ett node.js-projekt och använde parcel som atomatiserad utvecklingsmiljö.
+* Webbplatsen skapades i ett node.js-projekt och använde parcel som automatiserad utvecklingsmiljö.
 * Skriven i html, css och javaScript
 
 ### Replikera
